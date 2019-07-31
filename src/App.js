@@ -1,11 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
+import Start from './components/start';
 import './App.css';
+import './styles.css';
 
 function App() {
   return (
     <div className="App">
-      <h1>Muscle Strain Diagnostic Software</h1>
+      <h1 color='white'>Muscle Strain Diagnostic Software</h1>
+      <Start/>
     </div>
   );
 }
