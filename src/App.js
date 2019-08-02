@@ -6,8 +6,9 @@ import './styles.css';
 function App() {
   return (
     <div className="App">
-      <h1 color='white'>Muscle Strain Diagnostic Software</h1>
+      <div className="container">
       <Start/>
+      </div>
     </div>
   );
 }
