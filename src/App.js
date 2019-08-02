@@ -1,8 +1,9 @@
 import React from 'react';
-import Start from './components/start';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import './App.css';
 import './styles.css';
+import Start from './components/start';
+import Quiz from './components/quiz';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <div className="container">
         <Switch>
         <Route path="/" exact component={Start}/>
+        <Route path="/quiz" component={Quiz}/>
         </Switch>
       </div>
     </div>
