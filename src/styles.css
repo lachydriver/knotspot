@@ -55,3 +55,32 @@ body {
     display: flex;
     align-items: center;
   }
+
+@keyframes gradient { 
+    0% { background-position: 70% 70% }
+  100% { background-position: 0% 0% }
+  }
+
+.start-button {
+    font-size: 18px;
+    padding: 15px 30px;
+    margin: 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: uppercase;
+    background-color: #fff;
+    border: 0;
+    outline: 0;
+    box-shadow: 0 5px 10px 0 rgba(205, 209, 215, 0.8);
+    background: linear-gradient(to right, rgb(12, 77, 255), #16BFFD, rgb(12, 77, 255), #16BFFD, rgb(12, 77, 255));
+    background-size: 340% 340%;
+    color: white;
+    transition-duration: 0.3s;
+    transition-property: transform;
+}
+
+.start-button:hover {
+    animation: gradient 5s linear infinite;
+    transform: scale(1.1);
+}
