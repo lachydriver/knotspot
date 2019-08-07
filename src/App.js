@@ -2,8 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import './App.css';
 import './styles.css';
-import Start from './components/start';
-import Quiz from './components/quiz';
+import Start from './components/Start';
+import Quiz from './components/Quiz';
 
 function App() {
   return (
