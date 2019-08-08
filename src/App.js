@@ -1,26 +1,12 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import logo from './logo.svg';
 import './App.css';
-import './styles.css';
-import Start from './components/Start';
-import Quiz from './components/Quiz';
 
 function App() {
   return (
-    <Router>
     <div className="App">
-<<<<<<< HEAD
-      <h1>Muscle Strain Diagnostic Softwareee</h1>
-=======
-      <div className="container">
-        <Switch>
-        <Route path="/" exact component={Start}/>
-        <Route path="/quiz" component={Quiz}/>
-        </Switch>
-      </div>
->>>>>>> 51cf3c6c4369d9ffeadcf617e3aedc5a65b93c61
+      <h1>Muscle Strain Diagnostic Software</h1>
     </div>
-    </Router>
   );
 }
 
