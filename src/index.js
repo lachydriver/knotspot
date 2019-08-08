@@ -3,22 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { Provider} from 'react-redux';
-import { createStore } from "redux";
-import rootReducer from './store/index';
+import  store  from './store/index';
 import * as serviceWorker from './serviceWorker';
-
-const initialState = {
-    bones: [
-      {
-        name: "Scalene",
-        sum: 4,
-        id: 1
-      }
-    ]
-  };
-
-  const store = createStore(rootReducer, initialState);
-
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 

@@ -1,33 +1,52 @@
 import { createStore } from "redux";
 
+const initialState = {
+    bones: [
+      {
+        name: "Scalene",
+        sum: 0,
+        id: 0
+      },
+      {
+        name: "Para-cervilas",
+        sum: 0,
+        id: 1
+      },
+      {
+        name: "Neck",
+        sum: 0,
+        id: 2
+      }
+    ]
+};
 
+  
 
 function rootReducer(state = [], action) {
   switch (action.type) {
     case "UPDATE_SUM":
-      let stateCopy = state.map((bone) => {
-        const { id, name, sum } = action.payload;
-        if (bone.id === id) {
-          bone.sum = bone.sum + sum;
-        }
-        return bone;
-      });
-      return stateCopy;
+        return Object.assign({}, state, {
+          bones: state.bones.map(bone => {
+            const { id, sum } = action.payload;
+            if (bone.id !== id) {
+              return bone
+            }
+            
+            return Object.assign({}, bone, {
+              sum: bone.sum + sum
+            })
+          })
+        })
+      
     default:
       return state;
   }
-
-  /*     if(action.type === updateSum) {
-        return Object.assign({}, state, {
-        bones: state.bones.push(action.payload)
-        })
-    } */
 }
 
 export function updateSum(payload) {
   return { type: "UPDATE_SUM", payload };
 }
 
+const store = createStore(rootReducer, initialState, window.devToolsExtension && window.devToolsExtension());
 
-
-export default rootReducer;
+export default store;
