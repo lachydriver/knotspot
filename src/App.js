@@ -9,6 +9,8 @@ function App() {
   return (
     <Router>
     <div className="App">
+<<<<<<< HEAD
+      <h1>Muscle Strain Diagnostic Softwareee</h1>
 =======
       <div className="container">
         <Switch>
