@@ -13,6 +13,7 @@ class Quiz extends React.Component {
 
   updateSumSubmit(id, sum) {
     this.props.updateSum({id:id, sum:sum});
+    
   }
 
   componentDidUpdate(){

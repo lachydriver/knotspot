@@ -1,4 +1,5 @@
 import React from 'react';
+import Answers from './Answers'
 
 class Questions extends React.Component{
     constructor(props){
@@ -33,6 +34,7 @@ class Questions extends React.Component{
             <div>
                 <p>state: {this.state.question_id}</p>
                 {this.renderQuestion()}<br/>
+                <Answers question_id={this.state.question_id}/>
                 <button onClick={this.nextQuestion}>Next</button>
             </div>
         )
