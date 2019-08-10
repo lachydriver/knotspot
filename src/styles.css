@@ -93,3 +93,7 @@ body {
     animation: gradient 5s linear infinite;
     transform: scale(1.1);
 }
+
+button.selected {
+  color:red;
+}

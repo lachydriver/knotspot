@@ -47,8 +47,8 @@ class Questions extends React.Component {
         <Answers
           question_id={this.state.question_id}
           update={this.updateSumSubmit}
+          nextQuestion={this.nextQuestion}
         />
-        <button onClick={this.nextQuestion}>Next</button>
       </div>
     );
   }
