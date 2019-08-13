@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  font-family: sans-serif;
 }
 
 .App-logo {
@@ -30,4 +30,58 @@
   to {
     transform: rotate(360deg);
   }
+}
+.selected{
+  background: linear-gradient(to right, lightgreen, rgb(0, 217, 255)) !important;
+}
+
+.options {
+  width: 20%;
+  text-align: center;
+  margin-left: 30%;
+  cursor: pointer;
+  border: 2px solid #000;
+}
+
+h2{
+  text-align: center;
+}
+
+button{
+  float: center;
+  margin-left: 50%;
+}
+
+.start {
+  text-align: center;
+  background-color: white;
+  width: 50%;
+  border-radius: 20px;
+  box-shadow: 5px 6px 10px;
+  margin: auto;
+	margin-top: 15%;
+}
+
+.start-button {
+  font-size: 18px;
+  padding: 15px 30px;
+  margin: 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  background-color: #fff;
+  border: 0;
+  outline: 0;
+  box-shadow: 0 5px 10px 0 rgba(205, 209, 215, 0.8);
+  background: linear-gradient(to right, rgb(12, 77, 255), #16BFFD, rgb(12, 77, 255), #16BFFD, rgb(12, 77, 255));
+  background-size: 340% 340%;
+  color: white;
+  transition-duration: 0.3s;
+  transition-property: transform;
+}
+
+.start-button:hover {
+  animation: gradient 5s linear infinite;
+  transform: scale(1.1);
 }
