@@ -1,11 +1,9 @@
 body {
   background: linear-gradient(270deg, #00dbff, #008cff);
   background-size: 400% 400%;
-
   -webkit-animation: AnimationName 30s ease infinite;
   -moz-animation: AnimationName 30s ease infinite;
   animation: AnimationName 30s ease infinite;
-
   @-webkit-keyframes AnimationName {
     0% {
       background-position: 0% 50%;
@@ -59,41 +57,65 @@ body {
 }
 
 .container {
-    min-height: 100%;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
+  min-height: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
 
-@keyframes gradient { 
-    0% { background-position: 70% 70% }
-  100% { background-position: 0% 0% }
+@keyframes gradient {
+  0% {
+    background-position: 70% 70%
   }
+  100% {
+    background-position: 0% 0%
+  }
+}
 
 .start-button {
-    font-size: 18px;
-    padding: 15px 30px;
-    margin: 25px;
-    border-radius: 30px;
-    text-decoration: none;
-    display: inline-block;
-    text-transform: uppercase;
-    background-color: #fff;
-    border: 0;
-    outline: 0;
-    box-shadow: 0 5px 10px 0 rgba(205, 209, 215, 0.8);
-    background: linear-gradient(to right, rgb(12, 77, 255), #16BFFD, rgb(12, 77, 255), #16BFFD, rgb(12, 77, 255));
-    background-size: 340% 340%;
-    color: white;
-    transition-duration: 0.3s;
-    transition-property: transform;
+  font-size: 18px;
+  padding: 15px 30px;
+  margin: 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  background-color: #fff;
+  border: 0;
+  outline: 0;
+  box-shadow: 0 5px 10px 0 rgba(205, 209, 215, 0.8);
+  background: linear-gradient(to right, rgb(12, 77, 255), #16BFFD, rgb(12, 77, 255), #16BFFD, rgb(12, 77, 255));
+  background-size: 340% 340%;
+  color: white;
+  transition-duration: 0.3s;
+  transition-property: transform;
 }
 
 .start-button:hover {
-    animation: gradient 5s linear infinite;
-    transform: scale(1.1);
+  animation: gradient 5s linear infinite;
+  transform: scale(1.1);
 }
 
 button.selected {
-  color:red;
+  color: red;
+}
+
+.answers button {
+  display: inline-block;
+  padding: 0.3em 1.2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #FFFFFF;
+  background-color: #4eb5f1;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.answers button:hover {
+  background-color:#4095c6;
+  cursor: pointer;
 }

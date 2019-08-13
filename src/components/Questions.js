@@ -18,6 +18,9 @@ class Questions extends React.Component {
 
   updateSumSubmit(id, sum) {
     this.props.updateSum({ id: id, sum: sum });
+    this.setState(prevstate => {
+      return { question_id: prevstate.question_id + 1 };
+    });
   }
 
   componentDidMount() {
