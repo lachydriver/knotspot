@@ -8,6 +8,7 @@ class Quiz extends React.Component{
         options: [],
         quizEnd: false,
         disabled: true,
+        //results: {},
         //score: 0
     }
 
@@ -28,7 +29,7 @@ class Quiz extends React.Component{
     }
 
     nextQuestion = () => {
-        const {userAnswer, answer, score} = this.state;
+        const {userAnswer} = this.state;
         this.setState({
             currentQuestion: this.state.currentQuestion + 1
         })
@@ -305,6 +306,13 @@ class Quiz extends React.Component{
         }
     }
 
+
+    prevQuestion = () => {
+        this.setState({
+            currentQuestion: this.state.currentQuestion - 1 
+        })
+    }
+
     checkAnswer = answer => {
         this.setState({
             userAnswer: answer,
@@ -350,9 +358,9 @@ class Quiz extends React.Component{
                 var final = ordered.reverse().slice(0, 4)
                 //var top_result = this.ordered.slice(0, 2)
                 return (
-                    <div>
+                    <div className="End">
                         <h2>End of the quiz, Congratulation!</h2>
-                        <p>The most likelihood muscle strain are: </p>
+                        <h4>The most likelihood muscle strain are: </h4>
                         {/* <p>{Object.keys(this.results).map((key) =>(
                             <p className="ui floating message opions" key={key}
                             
@@ -361,7 +369,7 @@ class Quiz extends React.Component{
                         <ol>{final.map((item, index) =>(
                             <li className="ui floating message opions" key={index}
                             
-                            >{item[0]} {item[1]}</li>
+                            ><b>Muscle: </b>{item[0]} <b>Score: </b>{item[1]}</li>
                         ))}</ol>
                         <button onClick={this.restartHandle}>Re-take the quiz</button>
                     </div>
@@ -370,9 +378,10 @@ class Quiz extends React.Component{
         
         return (
             <div className = "App">
-                <h2>{questions}</h2>
+                <h2>Question: {questions}</h2>
+                <span>{`Questions ${currentQuestion} out of ${QuizQuest.length - 1}`}</span>
                     {options.map(option => (
-                        <p key={option.id} 
+                        <p key={option} 
                         className = {`ui floating message options 
                         ${userAnswer === option ? "selected" : null}
                         `}
@@ -383,7 +392,7 @@ class Quiz extends React.Component{
                             {option}
                         </p>
                     ))}
-                    {currentQuestion < QuizQuest.length - 1 && 
+                    {currentQuestion < QuizQuest.length - 1 &&
                     <button
                         disabled = {this.state.disabled}
                         onClick={this.nextQuestion}
