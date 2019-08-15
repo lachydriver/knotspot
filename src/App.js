@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Quiz from './components/Quiz';
+import QuizContainer from './components/QuizContainer';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import Home from './components/Home'
 
@@ -9,10 +9,10 @@ function App() {
   return (
     <Router>
     <div className="App">
-      <div className="container">
+      <div>
         <Switch>
         <Route path="/" exact component={Home}/>
-        <Route path="/quiz" component={Quiz}/>
+        <Route path="/quiz" component={QuizContainer}/>
         </Switch>
       </div>
     </div>

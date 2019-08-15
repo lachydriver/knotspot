@@ -16,7 +16,7 @@ export const QuizQuest = [
     },
     {
         id: 3,
-        question: "Location injurt occured?",
+        question: "Location injury occurred?",
         options: ["Work", "Car", "Sport", "Home", "Bicycle"],
     },
     {

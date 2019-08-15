@@ -454,12 +454,11 @@ class Quiz extends React.Component {
     this.results = {};
   };
 
-  buttonPressed = (e) => {
-      e.preventDefault();
-      let tag = e.target.id;
-      this.checkAnswer(tag)
-      console.log(tag + "pressed")
-  }
+  buttonPressed = e => {
+    e.preventDefault();
+    let tag = e.target.id;
+    this.checkAnswer(tag);
+  };
 
   showDiagram = () => {
     if (this.state.currentQuestion === 0) {
@@ -473,7 +472,7 @@ class Quiz extends React.Component {
               alt="neck"
               title="neck"
               id="Neck"
-              onClick={(e) => this.buttonPressed(e)}
+              onClick={e => this.buttonPressed(e)}
               coords="130,84,131,105,169,105,167,84"
               shape="poly"
             />
@@ -482,7 +481,7 @@ class Quiz extends React.Component {
               alt="leftshoulder"
               title="leftshoulder"
               id="leftshoulder"
-              onClick={(e) => this.buttonPressed(e)}
+              onClick={e => this.buttonPressed(e)}
               href=""
               coords="114,109,71,120,70,162"
               shape="poly"
@@ -492,7 +491,7 @@ class Quiz extends React.Component {
               alt="rightshoulder"
               title="rightshoulder"
               id="rightshoulder"
-              onClick={(e) => this.buttonPressed(e)}
+              onClick={e => this.buttonPressed(e)}
               href=""
               coords="185,114,225,117,234,162"
               shape="poly"
@@ -585,10 +584,11 @@ class Quiz extends React.Component {
         <h2>Question: {questions}</h2>
         <span>{`Questions ${currentQuestion} out of ${QuizQuest.length -
           1}`}</span>
-        {options.map(option => (
-          <p
-            key={option}
-            className={`ui floating message options 
+        <div className="answers">
+          {options.map(option => (
+            <p
+              key={option}
+              className={`ui floating message options 
                         ${
                           userAnswer_1 === option ||
                           userAnswer_2 === option ||
@@ -601,12 +601,13 @@ class Quiz extends React.Component {
                             : null
                         }
                         `}
-            onClick={() => this.checkAnswer(option)}
-          >
-            {option}
-          </p>
-        ))}
-        {this.showDiagram()}
+              onClick={() => this.checkAnswer(option)}
+            >
+              {option}
+            </p>
+          ))}
+        </div>
+        <div className="diagram">{this.showDiagram()}</div>
         {currentQuestion < QuizQuest.length - 1 && (
           <button disabled={this.state.disabled} onClick={this.nextQuestion}>
             Next
