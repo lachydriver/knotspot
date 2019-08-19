@@ -2,7 +2,7 @@ export const QuizQuest = [
     {
         id: 0,
         question: "In what part of your body do you experience most pain?",
-        options: ["Neck", "Top of shoulders", "Front of shoulder", "Shoulder into arm", "Back of shoulder", "Scapular", "Behind scapula", "Ribs", "Biceps", "Middle back", "Lower back", "Sacrum", "Gluteal muscles", "Hips", "Side of uppder leg", "Thighs/quads", "Hamstrings", "Front of knew", "Back of knee", "Front of lower leg", "Calf", "Inner ankle", "Outer ankle", "Foot"],
+        options: ["Neck", "Top of shoulders", "Front of shoulder", "Shoulder into arm", "Back of shoulder", "Scapular", "Behind scapula", "Ribs", "Biceps", "Middle back", "Lower back", "Sacrum", "Gluteal muscles", "Hips", "Side of upper leg", "Thighs/quads", "Hamstrings", "Front of knee", "Back of knee", "Front of lower leg", "Calf", "Inner ankle", "Outer ankle", "Foot"],
     },
     {
         id: 1,

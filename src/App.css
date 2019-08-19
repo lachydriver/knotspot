@@ -37,7 +37,7 @@
 }
 
 .options {
-  width: 40%;
+  width: 25%;
   text-align: center;
   cursor: pointer;
   border: 2px solid #000;
@@ -165,4 +165,8 @@ h4{
 
 .diagram {
   float: right;
+}
+
+area:hover{
+  cursor: pointer;
 }
