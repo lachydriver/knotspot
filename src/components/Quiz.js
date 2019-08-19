@@ -581,9 +581,9 @@ class Quiz extends React.Component {
 
     return (
       <div className="App">
-        <h2>Question: {questions}</h2>
-        <span>{`Questions ${currentQuestion} out of ${QuizQuest.length -
-          1}`}</span>
+        <h2>
+          Question {this.state.currentQuestion}/6: {questions}
+        </h2>
         <div className="answers">
           {options.map(option => (
             <p
@@ -608,17 +608,19 @@ class Quiz extends React.Component {
           ))}
         </div>
         <div className="diagram">{this.showDiagram()}</div>
-        {currentQuestion < QuizQuest.length - 1 && (
-          <button disabled={this.state.disabled} onClick={this.nextQuestion}>
-            Next
-          </button>
-        )}
-        {currentQuestion !== 0 && (
-          <button onClick={this.prevQuestion}>Back</button>
-        )}
-        {currentQuestion === QuizQuest.length - 1 && (
-          <button onClick={this.finishHandler}>Finish</button>
-        )}
+        <div className="buttons">
+          {currentQuestion < QuizQuest.length - 1 && (
+            <button disabled={this.state.disabled} onClick={this.nextQuestion}>
+              Next
+            </button>
+          )}
+          {currentQuestion === QuizQuest.length - 1 && (
+            <button onClick={this.finishHandler}>Finish</button>
+          )}
+          {currentQuestion !== 0 && (
+            <button onClick={this.prevQuestion}>Back</button>
+          )}
+        </div>
       </div>
     );
   }
