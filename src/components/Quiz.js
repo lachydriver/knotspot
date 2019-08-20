@@ -43,7 +43,8 @@ class Quiz extends React.Component {
   nextQuestion = () => {
     const { userAnswer_1 } = this.state;
     this.setState({
-      currentQuestion: this.state.currentQuestion + 1
+      currentQuestion: this.state.currentQuestion + 1,
+      disabled: true
     });
   };
 
@@ -53,7 +54,6 @@ class Quiz extends React.Component {
     if (this.state.currentQuestion !== prevState.currentQuestion) {
       this.setState(() => {
         return {
-          disabled: true,
           questions: QuizQuest[currentQuestion].question,
           options: QuizQuest[currentQuestion].options
         };
@@ -63,7 +63,8 @@ class Quiz extends React.Component {
 
   prevQuestion = () => {
     this.setState({
-      currentQuestion: this.state.currentQuestion - 1
+      disabled: false,
+      currentQuestion: this.state.currentQuestion - 1,
     });
   };
 
@@ -462,10 +463,10 @@ class Quiz extends React.Component {
   };
 
   determineClass = () => {
-    if(this.state.currentQuestion === 0){
-      return("firstquestion")
+    if (this.state.currentQuestion === 0) {
+      return ("firstquestion")
     } else {
-      return("answers")
+      return ("answers")
     }
   }
 
@@ -473,63 +474,21 @@ class Quiz extends React.Component {
     if (this.state.currentQuestion === 0) {
       return (
         <div>
-          <img src={diagram} usemap="#image-map" className="diagramimg"/>
+          <img src={diagram} usemap="#image-map" className="diagramimg" />
 
           <map name="image-map">
-            <area
-              target=""
-              alt="neck"
-              title="neck"
-              id="Neck"
-              onClick={e => this.buttonPressed(e)}
-              coords="130,84,131,105,169,105,167,84"
-              shape="poly"
-            />
-            <area
-              target=""
-              alt="leftshoulder"
-              title="leftshoulder"
-              id="leftshoulder"
-              onClick={e => this.buttonPressed(e)}
-              href=""
-              coords="114,109,71,120,70,162"
-              shape="poly"
-            />
-            <area
-              target=""
-              alt="rightshoulder"
-              title="rightshoulder"
-              id="rightshoulder"
-              onClick={e => this.buttonPressed(e)}
-              href=""
-              coords="185,114,225,117,234,162"
-              shape="poly"
-            />
-            <area
-              target=""
-              alt="ribs"
-              title="ribs"
-              href=""
-              coords="97,177,111,227,193,222,199,182"
-              shape="poly"
-            />
-            <area
-              target=""
-              alt="hamstrings"
-              title="hamstrings"
-              href=""
-              coords="92,259,151,320,208,258,210,408,95,413"
-              shape="poly"
-            />
-            <area
-              target=""
-              alt="foot"
-              title="foot"
-              href=""
-              coords="111,575,188,575,201,602,101,603"
-              shape="poly"
-            />
-            <area target="" alt="" title="" href="" coords="" shape="0" />
+            <area target="" alt="Neck" title="Neck" id="Neck" onClick={(e) => this.buttonPressed(e)} href="" coords="133,80,113,111,193,111,166,84" shape="poly" />
+            <area target="" alt="Top of shoulders" title="Top of shoulders" id="Top of shoulders" onClick={(e) => this.buttonPressed(e)} href="" coords="73,114,224,115,229,152,152,149,70,152" shape="poly" />
+            <area target="" alt="Ribs" title="Ribs" id="Ribs" onClick={(e) => this.buttonPressed(e)} href="" coords="94,152,101,266,199,264,206,160" shape="poly" />
+            <area target="" alt="Hips" title="Hips" id="Hips" onClick={(e) => this.buttonPressed(e)} href="" coords="98,269,204,267,209,309,90,311" shape="poly" />
+            <area target="" alt="Calf" title="Calf" id="Calf" onClick={(e) => this.buttonPressed(e)} href="" coords="159,509,168,549,190,556,212,472,207,408,168,428" shape="poly" />
+            <area target="" alt="Calf" title="Calf" id="Calf" onClick={(e) => this.buttonPressed(e)} href="" coords="96,422,92,477,106,539,136,539,137,511,131,434" shape="poly" />
+            <area target="" alt="Thighs/Quads" title="Thighs/Quads" id="Thighs/quads" onClick={(e) => this.buttonPressed(e)} href="" coords="89,319,91,405,133,426,148,320" shape="poly" />
+            <area target="" alt="Thighs/Quads" title="Thighs/Quads" id="Thighs/quads" onClick={(e) => this.buttonPressed(e)} href="" coords="157,323,211,318,207,402,167,420" shape="poly" />
+            <area target="" alt="Foot" title="Foot" id="Foot" onClick={(e) => this.buttonPressed(e)} href="" coords="109,541,101,603,140,603,134,543" shape="poly"/>
+            <area target="" alt="Foot" title="Foot" id="Foot" onClick={(e) => this.buttonPressed(e)} href="" coords="169,553,187,559,200,604,163,603" shape="poly"/>
+            <area target="" alt="Biceps" title="Biceps" id="Biceps" onClick={(e) => this.buttonPressed(e)} href="" coords="63,161,46,215,72,223,89,184,92,158" shape="poly" />
+            <area target="" alt="Biceps" title="Biceps" id="Biceps" onClick={(e) => this.buttonPressed(e)} href="" coords="208,167,214,192,226,217,248,206,239,163" shape="poly" />
           </map>
         </div>
       );
@@ -560,7 +519,7 @@ class Quiz extends React.Component {
       for (var r in re) {
         ordered.push([r, re[r]]);
       }
-      ordered.sort(function(a, b) {
+      ordered.sort(function (a, b) {
         return a[1] - b[1];
       });
       var final = ordered.reverse().slice(0, 4);
@@ -583,7 +542,7 @@ class Quiz extends React.Component {
               </li>
             ))}
           </ol>
-          <button onClick={this.restartHandle}>Re-take the quiz</button>
+          <button onClick={this.restartHandle} className="retakebutton">Find Another Muscle</button>
         </div>
       );
     }
@@ -591,7 +550,7 @@ class Quiz extends React.Component {
     return (
       <div className="App">
         <h2>
-          Question {this.state.currentQuestion}/6: {questions}
+          Question {this.state.currentQuestion + 1}/7: {questions}
         </h2>
         <div className={this.determineClass()}>
           {options.map(option => (
@@ -599,16 +558,16 @@ class Quiz extends React.Component {
               key={option}
               className={`ui floating message options 
                         ${
-                          userAnswer_1 === option ||
-                          userAnswer_2 === option ||
-                          userAnswer_3 === option ||
-                          userAnswer_4 === option ||
-                          userAnswer_5 === option ||
-                          userAnswer_6 === option ||
-                          userAnswer_7 === option
-                            ? "selected"
-                            : null
-                        }
+                userAnswer_1 === option ||
+                  userAnswer_2 === option ||
+                  userAnswer_3 === option ||
+                  userAnswer_4 === option ||
+                  userAnswer_5 === option ||
+                  userAnswer_6 === option ||
+                  userAnswer_7 === option
+                  ? "selected"
+                  : null
+                }
                         `}
               onClick={() => this.checkAnswer(option)}
             >
@@ -618,6 +577,9 @@ class Quiz extends React.Component {
         </div>
         <div className="diagram">{this.showDiagram()}</div>
         <div className="buttons">
+          {currentQuestion !== 0 && (
+            <button onClick={this.prevQuestion}>Back</button>
+          )}
           {currentQuestion < QuizQuest.length - 1 && (
             <button disabled={this.state.disabled} onClick={this.nextQuestion}>
               Next
@@ -625,9 +587,6 @@ class Quiz extends React.Component {
           )}
           {currentQuestion === QuizQuest.length - 1 && (
             <button onClick={this.finishHandler}>Finish</button>
-          )}
-          {currentQuestion !== 0 && (
-            <button onClick={this.prevQuestion}>Back</button>
           )}
         </div>
       </div>
