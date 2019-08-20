@@ -64,7 +64,7 @@ class Quiz extends React.Component {
   prevQuestion = () => {
     this.setState({
       disabled: false,
-      currentQuestion: this.state.currentQuestion - 1,
+      currentQuestion: this.state.currentQuestion - 1
     });
   };
 
@@ -464,11 +464,11 @@ class Quiz extends React.Component {
 
   determineClass = () => {
     if (this.state.currentQuestion === 0) {
-      return ("firstquestion")
+      return "firstquestion";
     } else {
-      return ("answers")
+      return "answers";
     }
-  }
+  };
 
   showDiagram = () => {
     if (this.state.currentQuestion === 0) {
@@ -477,18 +477,126 @@ class Quiz extends React.Component {
           <img src={diagram} usemap="#image-map" className="diagramimg" />
 
           <map name="image-map">
-            <area target="" alt="Neck" title="Neck" id="Neck" onClick={(e) => this.buttonPressed(e)} href="" coords="133,80,113,111,193,111,166,84" shape="poly" />
-            <area target="" alt="Top of shoulders" title="Top of shoulders" id="Top of shoulders" onClick={(e) => this.buttonPressed(e)} href="" coords="73,114,224,115,229,152,152,149,70,152" shape="poly" />
-            <area target="" alt="Ribs" title="Ribs" id="Ribs" onClick={(e) => this.buttonPressed(e)} href="" coords="94,152,101,266,199,264,206,160" shape="poly" />
-            <area target="" alt="Hips" title="Hips" id="Hips" onClick={(e) => this.buttonPressed(e)} href="" coords="98,269,204,267,209,309,90,311" shape="poly" />
-            <area target="" alt="Calf" title="Calf" id="Calf" onClick={(e) => this.buttonPressed(e)} href="" coords="159,509,168,549,190,556,212,472,207,408,168,428" shape="poly" />
-            <area target="" alt="Calf" title="Calf" id="Calf" onClick={(e) => this.buttonPressed(e)} href="" coords="96,422,92,477,106,539,136,539,137,511,131,434" shape="poly" />
-            <area target="" alt="Thighs/Quads" title="Thighs/Quads" id="Thighs/quads" onClick={(e) => this.buttonPressed(e)} href="" coords="89,319,91,405,133,426,148,320" shape="poly" />
-            <area target="" alt="Thighs/Quads" title="Thighs/Quads" id="Thighs/quads" onClick={(e) => this.buttonPressed(e)} href="" coords="157,323,211,318,207,402,167,420" shape="poly" />
-            <area target="" alt="Foot" title="Foot" id="Foot" onClick={(e) => this.buttonPressed(e)} href="" coords="109,541,101,603,140,603,134,543" shape="poly"/>
-            <area target="" alt="Foot" title="Foot" id="Foot" onClick={(e) => this.buttonPressed(e)} href="" coords="169,553,187,559,200,604,163,603" shape="poly"/>
-            <area target="" alt="Biceps" title="Biceps" id="Biceps" onClick={(e) => this.buttonPressed(e)} href="" coords="63,161,46,215,72,223,89,184,92,158" shape="poly" />
-            <area target="" alt="Biceps" title="Biceps" id="Biceps" onClick={(e) => this.buttonPressed(e)} href="" coords="208,167,214,192,226,217,248,206,239,163" shape="poly" />
+            <area
+              target=""
+              alt="Neck"
+              title="Neck"
+              id="Neck"
+              onClick={e => this.buttonPressed(e)}
+              href=""
+              coords="133,80,113,111,193,111,166,84"
+              shape="poly"
+            />
+            <area
+              target=""
+              alt="Top of shoulders"
+              title="Top of shoulders"
+              id="Top of shoulders"
+              onClick={e => this.buttonPressed(e)}
+              href=""
+              coords="73,114,224,115,229,152,152,149,70,152"
+              shape="poly"
+            />
+            <area
+              target=""
+              alt="Ribs"
+              title="Ribs"
+              id="Ribs"
+              onClick={e => this.buttonPressed(e)}
+              href=""
+              coords="94,152,101,266,199,264,206,160"
+              shape="poly"
+            />
+            <area
+              target=""
+              alt="Hips"
+              title="Hips"
+              id="Hips"
+              onClick={e => this.buttonPressed(e)}
+              href=""
+              coords="98,269,204,267,209,309,90,311"
+              shape="poly"
+            />
+            <area
+              target=""
+              alt="Calf"
+              title="Calf"
+              id="Calf"
+              onClick={e => this.buttonPressed(e)}
+              href=""
+              coords="159,509,168,549,190,556,212,472,207,408,168,428"
+              shape="poly"
+            />
+            <area
+              target=""
+              alt="Calf"
+              title="Calf"
+              id="Calf"
+              onClick={e => this.buttonPressed(e)}
+              href=""
+              coords="96,422,92,477,106,539,136,539,137,511,131,434"
+              shape="poly"
+            />
+            <area
+              target=""
+              alt="Thighs/Quads"
+              title="Thighs/Quads"
+              id="Thighs/quads"
+              onClick={e => this.buttonPressed(e)}
+              href=""
+              coords="89,319,91,405,133,426,148,320"
+              shape="poly"
+            />
+            <area
+              target=""
+              alt="Thighs/Quads"
+              title="Thighs/Quads"
+              id="Thighs/quads"
+              onClick={e => this.buttonPressed(e)}
+              href=""
+              coords="157,323,211,318,207,402,167,420"
+              shape="poly"
+            />
+            <area
+              target=""
+              alt="Foot"
+              title="Foot"
+              id="Foot"
+              onClick={e => this.buttonPressed(e)}
+              href=""
+              coords="109,541,101,603,140,603,134,543"
+              shape="poly"
+            />
+            <area
+              target=""
+              alt="Foot"
+              title="Foot"
+              id="Foot"
+              onClick={e => this.buttonPressed(e)}
+              href=""
+              coords="169,553,187,559,200,604,163,603"
+              shape="poly"
+            />
+            <area
+              target=""
+              alt="Biceps"
+              title="Biceps"
+              id="Biceps"
+              onClick={e => this.buttonPressed(e)}
+              href=""
+              coords="63,161,46,215,72,223,89,184,92,158"
+              shape="poly"
+            />
+            <area
+              target=""
+              alt="Biceps"
+              title="Biceps"
+              id="Biceps"
+              onClick={e => this.buttonPressed(e)}
+              href=""
+              coords="208,167,214,192,226,217,248,206,239,163"
+              shape="poly"
+            />
           </map>
         </div>
       );
@@ -519,7 +627,7 @@ class Quiz extends React.Component {
       for (var r in re) {
         ordered.push([r, re[r]]);
       }
-      ordered.sort(function (a, b) {
+      ordered.sort(function(a, b) {
         return a[1] - b[1];
       });
       var final = ordered.reverse().slice(0, 4);
@@ -542,7 +650,9 @@ class Quiz extends React.Component {
               </li>
             ))}
           </ol>
-          <button onClick={this.restartHandle} className="retakebutton">Find Another Muscle</button>
+          <button onClick={this.restartHandle} className="retakebutton">
+            Find Another Muscle
+          </button>
         </div>
       );
     }
@@ -558,16 +668,16 @@ class Quiz extends React.Component {
               key={option}
               className={`ui floating message options 
                         ${
-                userAnswer_1 === option ||
-                  userAnswer_2 === option ||
-                  userAnswer_3 === option ||
-                  userAnswer_4 === option ||
-                  userAnswer_5 === option ||
-                  userAnswer_6 === option ||
-                  userAnswer_7 === option
-                  ? "selected"
-                  : null
-                }
+                          userAnswer_1 === option ||
+                          userAnswer_2 === option ||
+                          userAnswer_3 === option ||
+                          userAnswer_4 === option ||
+                          userAnswer_5 === option ||
+                          userAnswer_6 === option ||
+                          userAnswer_7 === option
+                            ? "selected"
+                            : null
+                        }
                         `}
               onClick={() => this.checkAnswer(option)}
             >
