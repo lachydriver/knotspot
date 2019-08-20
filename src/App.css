@@ -220,6 +220,12 @@ area:hover {
   color: white;
 }
 
+.buttonsfirst button:hover {
+  animation: gradient 5s linear infinite;
+  background-position: right center;
+  transform: scale(1.1);
+}
+
 .buttons {
   position: absolute;
   bottom: 3%;
