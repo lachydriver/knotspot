@@ -42,7 +42,6 @@ class Quiz extends React.Component {
   }
 
   nextQuestion = () => {
-    const { userAnswer_1 } = this.state;
     this.setState({
       currentQuestion: this.state.currentQuestion + 1,
       disabled: true
@@ -483,7 +482,7 @@ class Quiz extends React.Component {
     if (this.state.currentQuestion === 0) {
       return (
         <div>
-          <img src={diagram} usemap="#image-map" className="diagramimg" />
+          <img src={diagram} usemap="#image-map" className="diagramimg" alt="bodyimage" />
 
           <map name="image-map">
             <area
