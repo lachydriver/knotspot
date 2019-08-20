@@ -6,6 +6,7 @@ class Quiz extends React.Component {
   constructor() {
     super();
     this.showDiagram = this.showDiagram.bind(this);
+    this.determineClass = this.determineClass.bind(this);
   }
   state = {
     userAnswer_1: null,
@@ -460,11 +461,19 @@ class Quiz extends React.Component {
     this.checkAnswer(tag);
   };
 
+  determineClass = () => {
+    if(this.state.currentQuestion === 0){
+      return("firstquestion")
+    } else {
+      return("answers")
+    }
+  }
+
   showDiagram = () => {
     if (this.state.currentQuestion === 0) {
       return (
         <div>
-          <img src={diagram} usemap="#image-map" />
+          <img src={diagram} usemap="#image-map" className="diagramimg"/>
 
           <map name="image-map">
             <area
@@ -584,7 +593,7 @@ class Quiz extends React.Component {
         <h2>
           Question {this.state.currentQuestion}/6: {questions}
         </h2>
-        <div className="answers">
+        <div className={this.determineClass()}>
           {options.map(option => (
             <p
               key={option}
