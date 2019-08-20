@@ -7,6 +7,7 @@ class Quiz extends React.Component {
     super();
     this.showDiagram = this.showDiagram.bind(this);
     this.determineClass = this.determineClass.bind(this);
+    this.determineButtons = this.determineButtons.bind(this);
   }
   state = {
     userAnswer_1: null,
@@ -470,6 +471,14 @@ class Quiz extends React.Component {
     }
   };
 
+  determineButtons = () => {
+    if(this.state.currentQuestion === 0) {
+      return "buttonsfirst"
+    } else {
+      return "buttons"
+    }
+  }
+
   showDiagram = () => {
     if (this.state.currentQuestion === 0) {
       return (
@@ -558,24 +567,22 @@ class Quiz extends React.Component {
               shape="poly"
             />
             <area
-              target=""
               alt="Foot"
               title="Foot"
-              id="Foot"
-              onClick={e => this.buttonPressed(e)}
               href=""
-              coords="109,541,101,603,140,603,134,543"
-              shape="poly"
+              id="Foot"
+              onClick={(e) => this.buttonPressed(e)}
+              coords="169,562 188,570 200,605 164,605 "
+              shape="polygon"
             />
             <area
-              target=""
               alt="Foot"
               title="Foot"
-              id="Foot"
-              onClick={e => this.buttonPressed(e)}
               href=""
-              coords="169,553,187,559,200,604,163,603"
-              shape="poly"
+              id="Foot"
+              onClick={(e) => this.buttonPressed(e)}
+              coords="131,565 113,577 107,591 101,603 138,606 "
+              shape="polygon"
             />
             <area
               target=""
@@ -686,7 +693,7 @@ class Quiz extends React.Component {
           ))}
         </div>
         <div className="diagram">{this.showDiagram()}</div>
-        <div className="buttons">
+        <div className={this.determineButtons()}>
           {currentQuestion !== 0 && (
             <button onClick={this.prevQuestion}>Back</button>
           )}
