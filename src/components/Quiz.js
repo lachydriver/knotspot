@@ -1,6 +1,7 @@
 import React from "react";
 import { QuizQuest } from "./QuizQuest";
 import diagram from "../content/img/Front.png";
+import backdiagram from "../content/img/Back.png";
 
 class Quiz extends React.Component {
   constructor() {
@@ -20,7 +21,8 @@ class Quiz extends React.Component {
     currentQuestion: 0,
     options: [],
     quizEnd: false,
-    disabled: true
+    disabled: true,
+    diagram: "front"
     //results: {},
     //score: 0
   };
@@ -478,8 +480,16 @@ class Quiz extends React.Component {
     }
   }
 
+  changeDiagram = (e) => {
+    if(e === "front"){
+      this.setState({diagram: "front"})
+    } else if(e === "back"){
+      this.setState({diagram: "back"})
+    }
+  }
+
   showDiagram = () => {
-    if (this.state.currentQuestion === 0) {
+    if (this.state.currentQuestion === 0 && this.state.diagram === "front") {
       return (
         <div>
           <img src={diagram} usemap="#image-map" className="diagramimg" alt="bodyimage" />
@@ -606,6 +616,12 @@ class Quiz extends React.Component {
           </map>
         </div>
       );
+    } else if(this.state.currentQuestion === 0 && this.state.diagram === "back") {
+      return(
+        <div>
+          <img src={backdiagram}/>
+        </div>
+      )
     }
   };
   // items = Object.keys(this.results).map(function(key){
@@ -691,7 +707,10 @@ class Quiz extends React.Component {
             </p>
           ))}
         </div>
-        <div className="diagram">{this.showDiagram()}</div>
+        <div className="diagram">
+        <button onClick={(e) => this.changeDiagram("front")}>Front</button>
+        <button onClick={(e) => this.changeDiagram("back")}>Back</button>
+        {this.showDiagram()}</div>
         <div className={this.determineButtons()}>
           {currentQuestion !== 0 && (
             <button onClick={this.prevQuestion}>Back</button>
