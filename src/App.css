@@ -45,10 +45,15 @@
   width: 25%;
   text-align: center;
   cursor: pointer;
-  border: 2px solid #000;
+  border: 1.5px solid #000;
   flex-basis: calc(25% - 20px);
   margin-right: 20px;
   display: block;
+  transition: 0.5s
+}
+
+.options:hover {
+  transform: scale(1.1);
 }
 
 .ui.message:last-child {

@@ -44,10 +44,18 @@ class Quiz extends React.Component {
   }
 
   nextQuestion = () => {
-    this.setState({
-      currentQuestion: this.state.currentQuestion + 1,
-      disabled: true
-    });
+    if (this.state.currentQuestion <= 5) {
+      console.log("question");
+      this.setState({
+        currentQuestion: this.state.currentQuestion + 1,
+        disabled: true
+      });
+    } else {
+      this.setState({
+        disabled: true
+      });
+      this.finishHandler();
+    }
   };
 
   //update component
@@ -473,26 +481,42 @@ class Quiz extends React.Component {
   };
 
   determineButtons = () => {
-    if(this.state.currentQuestion === 0) {
-      return "buttonsfirst"
+    if (this.state.currentQuestion === 0) {
+      return "buttonsfirst";
     } else {
-      return "buttons"
+      return "buttons";
     }
-  }
+  };
 
-  changeDiagram = (e) => {
-    if(e === "front"){
-      this.setState({diagram: "front"})
-    } else if(e === "back"){
-      this.setState({diagram: "back"})
+  changeDiagram = e => {
+    if (e === "front") {
+      this.setState({ diagram: "front" });
+    } else if (e === "back") {
+      this.setState({ diagram: "back" });
     }
-  }
+  };
+
+  showButtons = () => {
+    if (this.state.currentQuestion === 0) {
+      return (
+        <div>
+          <button onClick={e => this.changeDiagram("front")}>Front</button>
+          <button onClick={e => this.changeDiagram("back")}>Back</button>
+        </div>
+      );
+    }
+  };
 
   showDiagram = () => {
     if (this.state.currentQuestion === 0 && this.state.diagram === "front") {
       return (
         <div>
-          <img src={diagram} usemap="#image-map" className="diagramimg" alt="bodyimage" />
+          <img
+            src={diagram}
+            usemap="#image-map"
+            className="diagramimg"
+            alt="bodyimage"
+          />
 
           <map name="image-map">
             <area
@@ -580,7 +604,7 @@ class Quiz extends React.Component {
               title="Foot"
               href=""
               id="Foot"
-              onClick={(e) => this.buttonPressed(e)}
+              onClick={e => this.buttonPressed(e)}
               coords="169,562 188,570 200,605 164,605 "
               shape="polygon"
             />
@@ -589,7 +613,7 @@ class Quiz extends React.Component {
               title="Foot"
               href=""
               id="Foot"
-              onClick={(e) => this.buttonPressed(e)}
+              onClick={e => this.buttonPressed(e)}
               coords="131,565 113,577 107,591 101,603 138,606 "
               shape="polygon"
             />
@@ -616,12 +640,15 @@ class Quiz extends React.Component {
           </map>
         </div>
       );
-    } else if(this.state.currentQuestion === 0 && this.state.diagram === "back") {
-      return(
+    } else if (
+      this.state.currentQuestion === 0 &&
+      this.state.diagram === "back"
+    ) {
+      return (
         <div>
-          <img src={backdiagram}/>
+          <img src={backdiagram} />
         </div>
-      )
+      );
     }
   };
   // items = Object.keys(this.results).map(function(key){
@@ -665,7 +692,7 @@ class Quiz extends React.Component {
                         ))}</p> */}
           <ol>
             {final.map((item, index) => (
-              <li className="ui floating message opions" key={index}>
+              <li className="ui floating message options" key={index}>
                 <b>Muscle: </b>
                 {item[0]} <b>Score: </b>
                 {item[1]}
@@ -688,7 +715,7 @@ class Quiz extends React.Component {
           {options.map(option => (
             <p
               key={option}
-              className={`ui floating message options 
+              className={`floating ui message options 
                         ${
                           userAnswer_1 === option ||
                           userAnswer_2 === option ||
@@ -701,24 +728,22 @@ class Quiz extends React.Component {
                             : null
                         }
                         `}
-              onClick={() => this.checkAnswer(option)}
+              onClick={() => {
+                this.checkAnswer(option);
+                this.nextQuestion();
+              }}
             >
               {option}
             </p>
           ))}
         </div>
         <div className="diagram">
-        <button onClick={(e) => this.changeDiagram("front")}>Front</button>
-        <button onClick={(e) => this.changeDiagram("back")}>Back</button>
-        {this.showDiagram()}</div>
+          {this.showButtons()}
+          {this.showDiagram()}
+        </div>
         <div className={this.determineButtons()}>
           {currentQuestion !== 0 && (
             <button onClick={this.prevQuestion}>Back</button>
-          )}
-          {currentQuestion < QuizQuest.length - 1 && (
-            <button disabled={this.state.disabled} onClick={this.nextQuestion}>
-              Next
-            </button>
           )}
           {currentQuestion === QuizQuest.length - 1 && (
             <button onClick={this.finishHandler}>Finish</button>
