@@ -45,10 +45,15 @@
   width: 25%;
   text-align: center;
   cursor: pointer;
-  border: 2px solid #000;
+  border: 1.5px solid #000;
   flex-basis: calc(25% - 20px);
   margin-right: 20px;
   display: block;
+  transition: 0.5s
+}
+
+.options:hover {
+  transform: scale(1.1);
 }
 
 .ui.message:last-child {
@@ -199,6 +204,31 @@ area:hover {
 .buttonsfirst {
   position: absolute;
   bottom: 3%;
+}
+
+.diagram button {
+  font-size: 12px;
+  padding: 15px 30px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 30px;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  background-color: #fff;
+  border: 0;
+  outline: 0;
+  box-shadow: 0 5px 10px 0 rgba(205, 209, 215, 0.8);
+  background: linear-gradient(to right, rgb(12, 77, 255), #16bffd);
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+}
+
+.diagram button:hover {
+  animation: gradient 5s linear infinite;
+  background-position: right center;
+  transform: scale(1.1);
 }
 
 .buttonsfirst button {
