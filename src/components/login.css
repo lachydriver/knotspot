@@ -1,0 +1,105 @@
+.form {
+  text-align: center;
+  background-color: white;
+  height: 350px;
+  width: 500px;
+  border-radius: 20px;
+  box-shadow: 5px 6px 10px;
+  margin: auto;
+  margin-top: 15%;
+}
+
+.formreg {
+  text-align: center;
+  background-color: white;
+  height: 500px;
+  width: 500px;
+  border-radius: 20px;
+  box-shadow: 5px 6px 10px;
+  margin: auto;
+  margin-top: 15%;
+}
+
+.inputs
+{
+  margin-bottom: 40px;
+
+}
+
+.labels{
+  display: block;
+  text-transform: uppercase;
+  font-size: 18px;
+  margin: 10px;
+}
+
+.PageSwitcher{
+  float: right;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.title{
+
+  margin-left:40px;
+  margin-bottom: 50px;
+  font-size: 40px;
+  padding-top: 10px;
+}
+
+.FormFields{
+
+
+}
+
+.login{
+  magin-top:10px;
+}
+
+.titlereg{
+  margin-left:115px;
+  margin-bottom: 50px;
+  font-size: 40px;
+  padding-top: 10px;
+}
+
+area:hover {
+  cursor: pointer;
+}
+.reg-btn{
+  background-color: #16bffd;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  padding: 15px 70px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+
+.login-btn{
+  background-color: #16bffd;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  padding: 15px 70px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+
+
+.reg-btn:hover {
+  animation: gradient 5s linear infinite;
+  background-position: right center;
+  transform: scale(1.1);
+}
+
+
+.login-btn:hover{
+  animation: gradient 5s linear infinite;
+  background-position: right center;
+  transform: scale(1.1);
+}

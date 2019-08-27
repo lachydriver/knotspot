@@ -286,3 +286,31 @@ area:hover {
 .fronttext {
   margin: 20px;
 }
+
+.login-button {
+  font-size: 18px;
+  padding: 15px 30px;
+  margin: 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  background-color: #fff;
+  border: 0;
+  outline: 0;
+  box-shadow: 0 5px 10px 0 rgba(205, 209, 215, 0.8);
+  background: linear-gradient(to right, rgb(12, 77, 255), #16bffd);
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+}
+
+.banner {
+  text-align: center;
+  background-color: #B80C09;
+  width: 90%;
+  border-radius: 20px;
+  box-shadow: 5px 6px 10px;
+  margin: auto;
+  margin-top: 5%;
+}

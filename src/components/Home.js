@@ -4,7 +4,19 @@ import { Link } from "react-router-dom";
 class Home extends React.Component {
   render() {
     return (
-      <div className="start">
+
+      <div className="homepage">
+      <div className="banner">
+          <Link to="/quiz" className="start-button">
+            Start Quiz
+            </Link>
+            <Link to="/login" className="login-button">
+            Login
+            </Link>
+
+      </div>
+          <div className="start">
+
         <h1>Muscle Strain Diagnostic Software</h1>
         <p className="fronttext">
           Welcome to the Muscle Strain Diagnostic Software. This software is
@@ -23,6 +35,8 @@ class Home extends React.Component {
         <Link to="/quiz" className="start-button">
           Start Quiz
         </Link>
+
+      </div>
       </div>
     );
   }
