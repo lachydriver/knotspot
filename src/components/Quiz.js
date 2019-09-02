@@ -2,6 +2,7 @@ import React from "react";
 import { QuizQuest } from "./QuizQuest";
 import diagram from "../content/img/Front.png";
 import backdiagram from "../content/img/Back.png";
+import { Link } from "react-router-dom";
 
 class Quiz extends React.Component {
   constructor() {
@@ -513,7 +514,7 @@ class Quiz extends React.Component {
         <div>
           <img
             src={diagram}
-            usemap="#image-map"
+            useMap="#image-map"
             className="diagramimg"
             alt="bodyimage"
           />
@@ -683,8 +684,8 @@ class Quiz extends React.Component {
       //var top_result = this.ordered.slice(0, 2)
       return (
         <div className="End">
-          <h2>End of the quiz, Congratulation!</h2>
-          <h4>The most likelihood muscle strain are: </h4>
+          <h2>Finished Diagonstic</h2>
+          <h4>The most likely muscle strain are: </h4>
           {/* <p>{Object.keys(this.results).map((key) =>(
                             <p className="ui floating message opions" key={key}
 
@@ -700,8 +701,14 @@ class Quiz extends React.Component {
             ))}
           </ol>
           <button onClick={this.restartHandle} className="retakebutton">
-            Find Another Muscle
+            Run Another Diagonstic
           </button>
+          <p> Looking for treatment? Find an occupational therapist near you from the following links </p>
+          <a href='https://www.google.com/search?ei=zKVsXYz8E42-9QO4kbDwBg&q=occupational+therapist+in+brisbane&oq=occupational+therapist+in+brisbane&gs_l=psy-ab.3..0j0i22i30l9.1175488.1177455..1177567...0.6..0.264.2054.0j9j2......0....1..gws-wiz.......0i71j0i67j0i20i263.4NbRDF7Bm1k&ved=0ahUKEwiMkoSnsbHkAhUNX30KHbgIDG4Q4dUDCAo&uact=5 '>Therapist in Brisbane</a> <br />
+          <a href='https://www.google.com/search?ei=ZqpsXcKlNJmvyAPdq5aACg&q=occupational+therapist+in+Sydney&oq=occupational+therapist+in+Sydney&gs_l=psy-ab.3..0j0i22i30l8j0i22i10i30.115338.117425..118346...0.2..0.199.1352.0j8......0....1..gws-wiz.......0i71j35i39.AqYCYwYBtWE&ved=0ahUKEwjC8P_YtbHkAhWZF3IKHd2VBaAQ4dUDCAo&uact=5 '>Therapist in Sydney</a> <br />
+          <a href='https://www.google.com/search?ei=3qpsXd3xB428rQH344G4Dg&q=occupational+therapist+in+melbourne&oq=occupational+therapist+in+Melb&gs_l=psy-ab.1.0.0j0i22i30l9.15168.16056..17056...0.2..0.177.665.0j4......0....1..gws-wiz.......0i71.WLUfFeFzOYA '>Therapist in Melbourne</a> <br />
+          <a href=' '>Therapist in Perth</a> <br />
+          <a href=' '>Therapist in Darwin</a> <br />
         </div>
       );
     }

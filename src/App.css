@@ -62,6 +62,8 @@
 
 h2 {
   text-align: center;
+  font-size: 32px;
+  margin-left: 2%;
 }
 
 body {
@@ -117,7 +119,7 @@ body {
   border-radius: 20px;
   box-shadow: 5px 6px 10px;
   margin: auto;
-  margin-top: 15%;
+  margin-top: 5%;
 }
 
 .start-button {
@@ -146,7 +148,11 @@ body {
 }
 
 h4 {
+  display: block;
   text-align: center;
+  font-size: 22px;
+
+
 }
 
 .page-container {
@@ -172,6 +178,8 @@ h4 {
   height: 100%;
   float: left;
   margin: 10px auto;
+  margin-left: 100px;
+  margin-top: 50px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -179,6 +187,8 @@ h4 {
   align-items: flex-end;
   flex-wrap: wrap;
 }
+
+
 
 .answers {
   width: 100%;
@@ -321,15 +331,15 @@ area:hover {
   font-size: 18px;
   padding: 15px 30px;
   margin: 25px;
+  margin-left: 85%;
   border-radius: 30px;
   text-decoration: none;
   display: inline-block;
   text-transform: uppercase;
-  background-color: #fff;
+  background-color: #254E70;
   border: 0;
   outline: 0;
   box-shadow: 0 5px 10px 0 rgba(205, 209, 215, 0.8);
-  background: linear-gradient(to right, rgb(12, 77, 255), #16bffd);
   transition: 0.5s;
   background-size: 200% auto;
   color: white;
@@ -343,4 +353,9 @@ area:hover {
   box-shadow: 5px 6px 10px;
   margin: auto;
   margin-top: 5%;
+}
+
+.End ol {
+  align-self: center;
+  margin-left: 40%;
 }

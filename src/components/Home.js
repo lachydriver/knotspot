@@ -6,18 +6,13 @@ class Home extends React.Component {
     return (
 
       <div className="homepage">
-      <div className="banner">
-          <Link to="/quiz" className="start-button">
-            Start Quiz
-            </Link>
             <Link to="/login" className="login-button">
             Login
             </Link>
 
-      </div>
           <div className="start">
 
-        <h1>Muscle Strain Diagnostic Software</h1>
+        <h1>Knot Bot</h1>
         <p className="fronttext">
           Welcome to the Muscle Strain Diagnostic Software. This software is
           used to determine the cause of any specific pain you have in your
@@ -33,9 +28,9 @@ class Home extends React.Component {
           available to help relieve your pain.
         </p>
         <Link to="/quiz" className="start-button">
-          Start Quiz
+          Start Diagontic
         </Link>
-
+        
       </div>
       </div>
     );
