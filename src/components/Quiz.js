@@ -687,15 +687,15 @@ class Quiz extends React.Component {
           <h4>The most likelihood muscle strain are: </h4>
           {/* <p>{Object.keys(this.results).map((key) =>(
                             <p className="ui floating message opions" key={key}
-                            
+
                             >{key} {this.results[key]}</p>
                         ))}</p> */}
           <ol>
             {final.map((item, index) => (
               <li className="ui floating message options" key={index}>
                 <b>Muscle: </b>
-                {item[0]} <b>Score: </b>
-                {item[1]}
+                {item[0]}
+
               </li>
             ))}
           </ol>
@@ -715,7 +715,7 @@ class Quiz extends React.Component {
           {options.map(option => (
             <p
               key={option}
-              className={`floating ui message options 
+              className={`floating ui message options
                         ${
                           userAnswer_1 === option ||
                           userAnswer_2 === option ||
