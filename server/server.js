@@ -38,6 +38,22 @@ router.post('/postUser', (req, res) => {
       });
 });
 
+router.post('/loginUser', (req, res) => {
+
+    username = req.body.username;
+    password = req.body.password;
+
+    Data.findOne({username}).then(user => {
+      if(!user){
+        res.send(false)
+      } else{
+        res.send(user)
+      }
+    })
+        
+
+})
+
 app.use('/api', router)
 
 app.listen(API_PORT, () => console.log(`LISTENING ON PORT: ${API_PORT}`))
