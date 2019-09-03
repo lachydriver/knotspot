@@ -174,11 +174,11 @@ h4 {
 }
 
 .firstquestion {
-  max-width: 70%;
+  max-width: 65%;
   height: 100%;
   float: left;
   margin: 10px auto;
-  margin-left: 100px;
+  margin-left: 50px;
   margin-top: 50px;
   display: flex;
   flex-direction: row;
@@ -355,7 +355,27 @@ area:hover {
   margin-top: 5%;
 }
 
-.End ol {
-  align-self: center;
-  margin-left: 40%;
+.resultstable {
+  margin: 0 auto;
+}
+
+.resultstable td, .resultstable th {
+  padding: 10px;
+}
+
+.resultstable {
+  border: 1px solid black;
+  border-spacing: 0px;
+}
+
+.resultstable th, .resultstable td {
+  border-bottom: 1px solid black;
+}
+
+.resultstable tr:nth-child(even) {
+  background-color: rgb(212, 212, 212);
+}
+
+.boneselector:hover {
+  background-color: red;
 }

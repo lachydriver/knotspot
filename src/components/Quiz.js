@@ -512,12 +512,15 @@ class Quiz extends React.Component {
     if (this.state.currentQuestion === 0 && this.state.diagram === "front") {
       return (
         <div>
+          <div>
           <img
             src={diagram}
             useMap="#image-map"
             className="diagramimg"
             alt="bodyimage"
           />
+          <div className="boneselector"></div>
+          </div>
 
           <map name="image-map">
             <area
@@ -681,27 +684,27 @@ class Quiz extends React.Component {
         return a[1] - b[1];
       });
       var final = ordered.reverse().slice(0, 4);
+      const listyle = {'font-size': '1.5em'};
       //var top_result = this.ordered.slice(0, 2)
       return (
         <div className="End">
-          <h2>Finished Diagonstic</h2>
+          <h2>Finished Diagnostic</h2>
           <h4>The most likely muscle strain are: </h4>
-          {/* <p>{Object.keys(this.results).map((key) =>(
-                            <p className="ui floating message opions" key={key}
-
-                            >{key} {this.results[key]}</p>
-                        ))}</p> */}
-          <ol>
-            {final.map((item, index) => (
-              <li className="ui floating message options" key={index}>
-                <b>Muscle: </b>
-                {item[0]}
-
-              </li>
-            ))}
-          </ol>
+          <table className="resultstable">
+            <tr>
+              <th style={listyle}><b>Muscle</b></th>
+            </tr>
+            {final.map((item, index) => {
+              if(index === 0){
+                return <tr><td style={listyle}>{item[0]}</td></tr>
+              } else {
+                return <tr><td key={index}>{item[0]}</td></tr>
+              }
+            })}
+            
+          </table>
           <button onClick={this.restartHandle} className="retakebutton">
-            Run Another Diagonstic
+            Run Another Diagnostic
           </button>
           <p> Looking for treatment? Find an occupational therapist near you from the following links </p>
           <a href='https://www.google.com/search?ei=zKVsXYz8E42-9QO4kbDwBg&q=occupational+therapist+in+brisbane&oq=occupational+therapist+in+brisbane&gs_l=psy-ab.3..0j0i22i30l9.1175488.1177455..1177567...0.6..0.264.2054.0j9j2......0....1..gws-wiz.......0i71j0i67j0i20i263.4NbRDF7Bm1k&ved=0ahUKEwiMkoSnsbHkAhUNX30KHbgIDG4Q4dUDCAo&uact=5 '>Therapist in Brisbane</a> <br />

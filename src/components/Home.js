@@ -28,7 +28,7 @@ class Home extends React.Component {
           available to help relieve your pain.
         </p>
         <Link to="/quiz" className="start-button">
-          Start Diagontic
+          Start Diagnostic
         </Link>
         
       </div>
