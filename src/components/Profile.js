@@ -7,6 +7,10 @@ class Profile extends Component {
     e.preventDefault();
     this.props.logoutUser();
   };
+
+  componentDidMount(){
+    console.log(this.props.auth)
+  }
 render() {
     const { user } = this.props.auth;
 return (
@@ -14,11 +18,8 @@ return (
         <div className="row">
           <div className="col s12 center-align">
             <h4>
-              <b>Hey there,</b> {user.username.split(" ")[0]}
-              <p className="flow-text grey-text text-darken-1">
-                You are logged into a full-stack{" "}
-                <span style={{ fontFamily: "monospace" }}>MERN</span> app 👏
-              </p>
+              <b>Hey there,</b> {user.username.split(" ")[0]}<br/>
+              Your email is: {user.email}
             </h4>
             <button
               style={{
