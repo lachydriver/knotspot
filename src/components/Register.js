@@ -1,9 +1,13 @@
 import React from "react";
 import "./login.css";
-import { NavLink } from "react-router-dom";
-import axios from "axios";
+import { NavLink, withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { registerUser } from "./../actions/authActions";
+import classnames from "classnames";
+import { throwStatement } from "@babel/types";
 
-class Login extends React.Component {
+class Register extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -14,6 +18,13 @@ class Login extends React.Component {
     };
 
     this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    // If logged in and user navigates to Register page, should redirect them to dashboard
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
   }
 
   onChange = e => {
@@ -29,7 +40,15 @@ class Login extends React.Component {
       password: this.state.password
     };
 
-    console.log(newUser);
+    this.props.registerUser(newUser, this.props.history); 
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({
+        errors: nextProps.errors
+      });
+    }
   }
   
 
@@ -62,11 +81,14 @@ class Login extends React.Component {
                     type="text"
                     name="username"
                     id="username"
-                    className="register-input"
+                    className={classnames("", {
+                      invalid: errors.username
+                    })}
                     error={errors.username}
                     value={this.state.username}
                     onChange={this.onChange}
                   />
+                  <span className="red-text">{errors.name}</span>
                 </div>
 
                 <div className="inputs">
@@ -78,10 +100,13 @@ class Login extends React.Component {
                     name="email"
                     id="email"
                     error={errors.email}
-                    className="register-input"
+                    className={classnames("", {
+                      invalid: errors.email
+                    })}
                     value={this.state.email}
                     onChange={this.onChange}
                   />
+                  <span className="red-text">{errors.email}</span>
                 </div>
 
                 <div className="inputs">
@@ -92,16 +117,20 @@ class Login extends React.Component {
                     type="password"
                     name="password"
                     id="password"
-                    className="register-input"
+                    className={classnames("", {
+                      invalid: errors.password
+                    })}
                     error={errors.password}
                     value={this.state.password}
                     onChange={this.onChange}
                   />
+                  <span className="red-text">{errors.password}</span>
                 </div>
               </div>
               <button
                 className="reg-btn"
                 type="submit"
+                onClick={this.onSubmit}
               >
                 Register
               </button>
@@ -113,4 +142,16 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+Register.propTypes = {
+  registerUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
+};
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+});
+export default connect(
+  mapStateToProps,
+  { registerUser }
+)(withRouter(Register));
