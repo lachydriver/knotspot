@@ -1,6 +1,7 @@
 import React from "react";
 import './login.css';
 import { NavLink } from 'react-router-dom'
+import axios from "axios";
 
 class Login extends React.Component {
   constructor() {
@@ -28,9 +29,17 @@ class Login extends React.Component {
 
       handleSubmit(e) {
           e.preventDefault();
-
-          console.log('The form was submitted with the following data:');
-          console.log(this.state);
+          axios.post('http://localhost:3001/api/loginUser', {
+            username: this.state.username,
+            password: this.state.password
+          }).then(function(res) {
+            if(res){
+              console.log(res.data)
+            }
+          }            
+          ).catch(function (error){
+            console.log(error)
+          })
       }
 
 
@@ -61,10 +70,9 @@ class Login extends React.Component {
                         </div>
                         </div>
 
-                        <button
-                        type="button" className="login-btn" onClick={this.handleSubmit.bind(this)} >Login< /button>
-                        </form>
-                    </div>
+                        <button type="button" type="submit" className="login-btn" onClick={this.handleSubmit.bind(this)} >Login</button>
+                  </form>
+              </div>
 
       </div>
     </div>

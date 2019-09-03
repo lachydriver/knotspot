@@ -43,11 +43,15 @@ router.post('/loginUser', (req, res) => {
     username = req.body.username;
     password = req.body.password;
 
+    valid = null;
+
     Data.findOne({username}).then(user => {
       if(!user){
-        res.send(false)
-      } else{
-        res.send(user)
+        return res.status(404).json({ usernotfound: "Username not found"})
+      } else if(password === user.password){
+        return res.send(user)
+      } else {
+        return res.status(400).json({ incorrectpassword: "Your password was incorrect"})
       }
     })
         
