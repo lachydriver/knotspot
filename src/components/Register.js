@@ -7,43 +7,36 @@ class Login extends React.Component {
   constructor() {
     super();
     this.state = {
-      data: [],
-      username: null,
-      email: null,
-      password: null,
+      username: "",
+      email: "",
+      password: "",
+      errors: {}
     };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.addUsertoDB = this.addUsertoDB.bind(this);
-  }
-  handleChange(e) {
-    let target = e.target;
-    let value = target.type === "checkbox" ? target.checked : target.value;
-    let name = target.name;
-
-    this.setState({
-      [name]: value
-    });
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
-  handleSubmit(e) {
+  onChange = e => {
+    this.setState({ [e.target.id]: e.target.value})
+  };
+
+  onSubmit = e => {
     e.preventDefault();
-
-    console.log("The form was submitted with the following data:");
-    console.log(this.state);
-  }
-
-  addUsertoDB = () => {
-    axios.post('http://localhost:3001/api/postUser',{
+  
+    const newUser = {
       username: this.state.username,
-      password: this.state.password,
-      email: this.state.email
-    });
-    console.log('added ' + this.state.username + 'to database');
+      email: this.state.email,
+      password: this.state.password
+    };
+
+    console.log(newUser);
   }
+  
 
   render() {
+
+    const { errors } = this.state;
+
     return (
       <div className="form-root">
         <div className="formreg">
@@ -59,7 +52,7 @@ class Login extends React.Component {
           </div>
           <div className="register">
             <h1 className="titlereg">Register</h1>
-            <form className="FormFields" onSubmit={this.handleSubmit}>
+            <form className="FormFields" onSubmit={this.onSubmit} noValidate>
               <div className="inputgrp">
                 <div className="inputs">
                   <label className="labels" htmlFor="username">
@@ -68,9 +61,11 @@ class Login extends React.Component {
                   <input
                     type="text"
                     name="username"
+                    id="username"
                     className="register-input"
+                    error={errors.username}
                     value={this.state.username}
-                    onChange={this.handleChange}
+                    onChange={this.onChange}
                   />
                 </div>
 
@@ -81,9 +76,11 @@ class Login extends React.Component {
                   <input
                     type="email"
                     name="email"
+                    id="email"
+                    error={errors.email}
                     className="register-input"
                     value={this.state.email}
-                    onChange={this.handleChange}
+                    onChange={this.onChange}
                   />
                 </div>
 
@@ -94,16 +91,17 @@ class Login extends React.Component {
                   <input
                     type="password"
                     name="password"
+                    id="password"
                     className="register-input"
+                    error={errors.password}
                     value={this.state.password}
-                    onChange={this.handleChange}
+                    onChange={this.onChange}
                   />
                 </div>
               </div>
               <button
-                type="button"
                 className="reg-btn"
-                onClick={() => this.addUsertoDB()}
+                type="submit"
               >
                 Register
               </button>

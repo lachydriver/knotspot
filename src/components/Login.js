@@ -8,43 +8,33 @@ class Login extends React.Component {
     super();
     this.state = {
             username: '',
-            password: ''
+            password: '',
+            errors: {}
         };
-
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
 
 
 
   };
-  handleChange(e) {
-          let target = e.target;
-          let value = target.type === 'checkbox' ? target.checked : target.value;
-          let name = target.name;
 
-          this.setState({
-            [name]: value
-          });
-      }
+  onChange = e => {
+    this.setState({ [e.target.id]: e.target.value});
+  }
 
-      handleSubmit(e) {
-          e.preventDefault();
-          axios.post('http://localhost:3001/api/loginUser', {
-            username: this.state.username,
-            password: this.state.password
-          }).then(function(res) {
-            if(res){
-              console.log(res.data)
-            }
-          }            
-          ).catch(function (error){
-            console.log(error)
-          })
-      }
+  onSubmit = e => {
+    e.preventDefault();
 
+    const userData = {
+      username: this.state.username,
+      password: this.state.password
+    }
+
+    console.log(userData)
+  }
 
 
   render(){
+
+    const { errors } = this.state;
     return (
 
 
@@ -57,20 +47,20 @@ class Login extends React.Component {
             </div>
                 <div className='login'>
                 <h1 className='title'>Login</h1>
-                <form className="FormFields" onSubmit={this.handleSubmit}>
+                <form className="FormFields" onSubmit={this.onSubmit} noValidate>
                   <div className='inputgrp'>
                         <div className="inputs">
                         <label className="labels" htmlFor="username">Username</label>
-                        <input type="text" name="username" className="login-input" value={this.state.username} onChange={this.handleChange} />
+                        <input type="text" name="username" id="username" className="login-input" value={this.state.username} onChange={this.onChange} />
                         </div>
 
                         <div className="inputs">
                         <label className="labels" htmlFor="password">Password</label>
-                        <input type="password" name="password" className="login-input" value={this.state.password} onChange={this.handleChange} />
+                        <input type="password" name="password" className="login-input" id="password" value={this.state.password} onChange={this.onChange} />
                         </div>
                         </div>
 
-                        <button type="button" type="submit" className="login-btn" onClick={this.handleSubmit.bind(this)} >Login</button>
+                        <button type="submit" className="login-btn">Login</button>
                   </form>
               </div>
 
