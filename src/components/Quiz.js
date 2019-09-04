@@ -3,6 +3,9 @@ import { QuizQuest } from "./QuizQuest";
 import diagram from "../content/img/Front.png";
 import backdiagram from "../content/img/Back.png";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
 class Quiz extends React.Component {
   constructor() {
@@ -23,7 +26,8 @@ class Quiz extends React.Component {
     options: [],
     quizEnd: false,
     disabled: true,
-    diagram: "front"
+    diagram: "front",
+    results: []
     //results: {},
     //score: 0
   };
@@ -481,6 +485,19 @@ class Quiz extends React.Component {
     }
   };
 
+  saveResults = () => {
+/*     console.log(this.results)
+    axios.post("/api/results/saveresults", {
+      user_id: this.props.auth.user.id,
+      results: this.results
+    }).then(function(res){
+      console.log(res)
+    }).catch(function(err) {
+      console.log(err)
+    }) */
+    console.log(this.state.results)
+  };
+
   determineButtons = () => {
     if (this.state.currentQuestion === 0) {
       return "buttonsfirst";
@@ -513,13 +530,13 @@ class Quiz extends React.Component {
       return (
         <div>
           <div>
-          <img
-            src={diagram}
-            useMap="#image-map"
-            className="diagramimg"
-            alt="bodyimage"
-          />
-          <div className="boneselector"></div>
+            <img
+              src={diagram}
+              useMap="#image-map"
+              className="diagramimg"
+              alt="bodyimage"
+            />
+            <div className="boneselector"></div>
           </div>
 
           <map name="image-map">
@@ -684,7 +701,9 @@ class Quiz extends React.Component {
         return a[1] - b[1];
       });
       var final = ordered.reverse().slice(0, 4);
-      const listyle = {'font-size': '1.5em'};
+      this.setState({results: final});
+      console.log(final);
+      const listyle = { "font-size": "1.5em" };
       //var top_result = this.ordered.slice(0, 2)
       return (
         <div className="End">
@@ -692,26 +711,51 @@ class Quiz extends React.Component {
           <h4>The most likely muscle strain are: </h4>
           <table className="resultstable">
             <tr>
-              <th style={listyle}><b>Muscle</b></th>
+              <th style={listyle}>
+                <b>Muscle</b>
+              </th>
             </tr>
             {final.map((item, index) => {
-              if(index === 0){
-                return <tr><td style={listyle}>{item[0]}</td></tr>
+              if (index === 0) {
+                return (
+                  <tr>
+                    <td style={listyle}>{item[0]}</td>
+                  </tr>
+                );
               } else {
-                return <tr><td key={index}>{item[0]}</td></tr>
+                return (
+                  <tr>
+                    <td key={index}>{item[0]}</td>
+                  </tr>
+                );
               }
             })}
-            
           </table>
           <button onClick={this.restartHandle} className="retakebutton">
             Run Another Diagnostic
           </button>
-          <p> Looking for treatment? Find an occupational therapist near you from the following links </p>
-          <a href='https://www.google.com/search?ei=zKVsXYz8E42-9QO4kbDwBg&q=occupational+therapist+in+brisbane&oq=occupational+therapist+in+brisbane&gs_l=psy-ab.3..0j0i22i30l9.1175488.1177455..1177567...0.6..0.264.2054.0j9j2......0....1..gws-wiz.......0i71j0i67j0i20i263.4NbRDF7Bm1k&ved=0ahUKEwiMkoSnsbHkAhUNX30KHbgIDG4Q4dUDCAo&uact=5 '>Therapist in Brisbane</a> <br />
-          <a href='https://www.google.com/search?ei=ZqpsXcKlNJmvyAPdq5aACg&q=occupational+therapist+in+Sydney&oq=occupational+therapist+in+Sydney&gs_l=psy-ab.3..0j0i22i30l8j0i22i10i30.115338.117425..118346...0.2..0.199.1352.0j8......0....1..gws-wiz.......0i71j35i39.AqYCYwYBtWE&ved=0ahUKEwjC8P_YtbHkAhWZF3IKHd2VBaAQ4dUDCAo&uact=5 '>Therapist in Sydney</a> <br />
-          <a href='https://www.google.com/search?ei=3qpsXd3xB428rQH344G4Dg&q=occupational+therapist+in+melbourne&oq=occupational+therapist+in+Melb&gs_l=psy-ab.1.0.0j0i22i30l9.15168.16056..17056...0.2..0.177.665.0j4......0....1..gws-wiz.......0i71.WLUfFeFzOYA '>Therapist in Melbourne</a> <br />
-          <a href=' '>Therapist in Perth</a> <br />
-          <a href=' '>Therapist in Darwin</a> <br />
+          <button onClick={this.saveResults} className="retakebutton">
+            Save Results
+          </button>
+          <p>
+            {" "}
+            Looking for treatment? Find an occupational therapist near you from
+            the following links{" "}
+          </p>
+          <a href="https://www.google.com/search?ei=zKVsXYz8E42-9QO4kbDwBg&q=occupational+therapist+in+brisbane&oq=occupational+therapist+in+brisbane&gs_l=psy-ab.3..0j0i22i30l9.1175488.1177455..1177567...0.6..0.264.2054.0j9j2......0....1..gws-wiz.......0i71j0i67j0i20i263.4NbRDF7Bm1k&ved=0ahUKEwiMkoSnsbHkAhUNX30KHbgIDG4Q4dUDCAo&uact=5 ">
+            Therapist in Brisbane
+          </a>{" "}
+          <br />
+          <a href="https://www.google.com/search?ei=ZqpsXcKlNJmvyAPdq5aACg&q=occupational+therapist+in+Sydney&oq=occupational+therapist+in+Sydney&gs_l=psy-ab.3..0j0i22i30l8j0i22i10i30.115338.117425..118346...0.2..0.199.1352.0j8......0....1..gws-wiz.......0i71j35i39.AqYCYwYBtWE&ved=0ahUKEwjC8P_YtbHkAhWZF3IKHd2VBaAQ4dUDCAo&uact=5 ">
+            Therapist in Sydney
+          </a>{" "}
+          <br />
+          <a href="https://www.google.com/search?ei=3qpsXd3xB428rQH344G4Dg&q=occupational+therapist+in+melbourne&oq=occupational+therapist+in+Melb&gs_l=psy-ab.1.0.0j0i22i30l9.15168.16056..17056...0.2..0.177.665.0j4......0....1..gws-wiz.......0i71.WLUfFeFzOYA ">
+            Therapist in Melbourne
+          </a>{" "}
+          <br />
+          <a href=" ">Therapist in Perth</a> <br />
+          <a href=" ">Therapist in Darwin</a> <br />
         </div>
       );
     }
@@ -764,4 +808,8 @@ class Quiz extends React.Component {
   }
 }
 
-export default Quiz;
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps)(Quiz);
