@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
   font-family: sans-serif;
@@ -67,44 +68,12 @@ h2 {
 }
 
 body {
-  background: linear-gradient(270deg, #00dbff, #008cff);
-  background-size: 400% 400%;
-  -webkit-animation: AnimationName 30s ease infinite;
-  -moz-animation: AnimationName 30s ease infinite;
-  animation: AnimationName 30s ease infinite;
-  @-webkit-keyframes AnimationName {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-  @-moz-keyframes AnimationName {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-  @keyframes AnimationName {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
+  background-image: url('./content/img/Background1.jpg');
+  background-size: cover;
+
+
+
+
 }
 
 /* button{
@@ -114,12 +83,12 @@ body {
 
 .start {
   text-align: center;
-  background-color: white;
+  background-color: rgba(205, 209, 215, 0.95);
   width: 50%;
   border-radius: 20px;
   box-shadow: 5px 6px 10px;
   margin: auto;
-  margin-top: 5%;
+  margin-top: 9%;
 }
 
 .start-button {
@@ -378,4 +347,13 @@ area:hover {
 
 .boneselector:hover {
   background-color: red;
+}
+
+img{
+  
+}
+
+p{
+  display: block;
+
 }

@@ -701,7 +701,7 @@ class Quiz extends React.Component {
         return a[1] - b[1];
       });
       var final = ordered.reverse().slice(0, 4);
-      this.setState({results: final});
+      //this.setState({results: final});
       console.log(final);
       const listyle = { "font-size": "1.5em" };
       //var top_result = this.ordered.slice(0, 2)

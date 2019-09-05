@@ -4,7 +4,7 @@ import { NavLink, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "./../actions/authActions";
-import classnames from "classnames";
+import  classnames  from "classnames";
 import { throwStatement } from "@babel/types";
 
 class Register extends React.Component {
@@ -33,14 +33,14 @@ class Register extends React.Component {
 
   onSubmit = e => {
     e.preventDefault();
-  
+
     const newUser = {
       username: this.state.username,
       email: this.state.email,
       password: this.state.password
     };
 
-    this.props.registerUser(newUser, this.props.history); 
+    this.props.registerUser(newUser, this.props.history);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -50,7 +50,7 @@ class Register extends React.Component {
       });
     }
   }
-  
+
 
   render() {
 

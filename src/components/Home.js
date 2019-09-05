@@ -1,5 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import robot from "../content/img/robot2.png";
+
+
 
 class Home extends React.Component {
   render() {
@@ -13,6 +16,7 @@ class Home extends React.Component {
           <div className="start">
 
         <h1>Knot Bot</h1>
+        <img src={robot} alt='robot'/>
         <p className="fronttext">
           Welcome to the Muscle Strain Diagnostic Software. This software is
           used to determine the cause of any specific pain you have in your
@@ -30,8 +34,9 @@ class Home extends React.Component {
         <Link to="/quiz" className="start-button">
           Start Diagnostic
         </Link>
-        
+
       </div>
+
       </div>
     );
   }
