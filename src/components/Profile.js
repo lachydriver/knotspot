@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "./../actions/authActions";
+import { Link } from 'react-router-dom';
 import axios from "axios";
 
 class Profile extends Component {
@@ -34,6 +35,8 @@ class Profile extends Component {
       .catch(err => {
         if(err.response.status === 404){
           this.setState({error: "No Saved Results Found"})
+        } else {
+          console.log(err)
         }
       });
   };
@@ -41,9 +44,8 @@ class Profile extends Component {
   render() {
     const { user } = this.props.auth;
     return (
-      <div style={{ height: "75vh" }} className="container valign-wrapper">
-        <div className="row">
-          <div className="col s12 center-align">
+      <div className="page-container">
+        <div className="container">
             <h4>
               <b>Hey there,</b> {user.username.split(" ")[0]}
               <br />
@@ -66,21 +68,17 @@ class Profile extends Component {
                 </div>
               );
             })}<br/>
+            <Link to="/quiz" className="retakebutton">
+              Take Quiz
+            </Link>
             <button
-              style={{
-                width: "150px",
-                borderRadius: "3px",
-                letterSpacing: "1.5px",
-                marginTop: "1rem"
-              }}
+              className="retakebutton"
               onClick={this.onLogoutClick}
-              className="btn btn-large waves-effect waves-light hoverable blue accent-3"
             >
               Logout
             </button>
+            </div>
           </div>
-        </div>
-      </div>
     );
   }
 }
