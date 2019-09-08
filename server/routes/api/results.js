@@ -15,7 +15,7 @@ router.post("/saveresults", (req, res) => {
         results: results
     });
 
-    newResult.save().then(result => res.json(result)).catch(err => console.log(err));
+    newResult.save().then(result => res.json(result)).catch(err => res.status(400));
 });
 
 router.post("/getresults", (req, res) => {

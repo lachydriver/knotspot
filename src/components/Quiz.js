@@ -26,9 +26,8 @@ class Quiz extends React.Component {
     options: [],
     quizEnd: false,
     disabled: true,
-    diagram: "front"
-    //results: {},
-    //score: 0
+    diagram: "front",
+    saveresultmessage: ""
   };
 
   results = {};
@@ -498,8 +497,9 @@ class Quiz extends React.Component {
     axios.post("/api/results/saveresults", {
       user_id: this.props.auth.user.id,
       results: final
-    }).then(function(res){
+    }).then(res => {
       console.log(res)
+      this.setState({saveresultmessage: "Result saved successfully to your profile"})
     }).catch(function(err) {
       console.log(err)
     })
@@ -744,6 +744,7 @@ class Quiz extends React.Component {
           <button onClick={this.saveResults} className="retakebutton">
             Save Results
           </button>
+          <p>{this.state.saveresultmessage}</p>
           <p>
             {" "}
             Looking for treatment? Find an occupational therapist near you from
