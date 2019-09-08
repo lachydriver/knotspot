@@ -1,6 +1,6 @@
 import React from "react";
 import "./login.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "./../actions/authActions";
@@ -53,6 +53,9 @@ class Login extends React.Component {
     const { errors } = this.state;
     return (
       <div className="form-root">
+        <Link to="/" className="profile-button retakebutton">
+      Home
+        </Link>
         <div className="form">
           <div className="PageSwitcher">
             <NavLink
