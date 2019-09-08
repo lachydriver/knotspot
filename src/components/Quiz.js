@@ -493,16 +493,21 @@ class Quiz extends React.Component {
       return a[1] - b[1];
     });
     var final = ordered.reverse().slice(0, 4);
-    console.log(final)
-    axios.post("/api/results/saveresults", {
-      user_id: this.props.auth.user.id,
-      results: final
-    }).then(res => {
-      console.log(res)
-      this.setState({saveresultmessage: "Result saved successfully to your profile"})
-    }).catch(function(err) {
-      console.log(err)
-    })
+    console.log(final);
+    axios
+      .post("/api/results/saveresults", {
+        user_id: this.props.auth.user.id,
+        results: final
+      })
+      .then(res => {
+        console.log(res);
+        this.setState({
+          saveresultmessage: "Result saved successfully to your profile"
+        });
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
   };
 
   determineButtons = () => {
@@ -529,6 +534,20 @@ class Quiz extends React.Component {
           <button onClick={e => this.changeDiagram("back")}>Back</button>
         </div>
       );
+    }
+  };
+
+  showSaveResultButton = () => {
+    if (this.props.auth.isAuthenticated === true) {
+      return (
+        <button onClick={this.saveResults} className="retakebutton">
+          Save Results
+        </button>
+      );
+    } else {
+      return (
+        <p>Sign in to save your results</p>
+      )
     }
   };
 
@@ -679,9 +698,6 @@ class Quiz extends React.Component {
       );
     }
   };
-  // items = Object.keys(this.results).map(function(key){
-  //     return [key, this.results[key]]
-  // });
 
   render() {
     const {
@@ -741,9 +757,7 @@ class Quiz extends React.Component {
           <button onClick={this.restartHandle} className="retakebutton">
             Run Another Diagnostic
           </button>
-          <button onClick={this.saveResults} className="retakebutton">
-            Save Results
-          </button>
+          {this.showSaveResultButton()}
           <p>{this.state.saveresultmessage}</p>
           <p>
             {" "}
