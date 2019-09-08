@@ -357,3 +357,9 @@ p{
   display: block;
 
 }
+
+.profile-button {
+  top: 10px;
+  right: 10px;
+  position: absolute;
+}
