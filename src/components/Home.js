@@ -9,7 +9,7 @@ class Home extends React.Component {
     return (
 
       <div className="homepage">
-            <Link to="/login" className="login-button">
+            <Link to="/login" className="profile-button retakebutton">
             Login
             </Link>
 
