@@ -5,50 +5,68 @@ import { logoutUser } from "./../actions/authActions";
 import axios from "axios";
 
 class Profile extends Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
       previousresults: []
-    }
+    };
+    this.printResults = this.printResults.bind(this);
   }
-
 
   onLogoutClick = e => {
     e.preventDefault();
     this.props.logoutUser();
   };
 
-  componentDidMount(){
+  componentDidMount() {
     console.log(this.props.auth);
     this.getResults();
   }
 
   getResults = () => {
-    axios.post("/api/results/getresults", {
-      user_id: this.props.auth.user.id
-    }).then((res) => {
-      console.log(res.data)
-      this.setState({previousresults: res.data});
-    }).catch(function(err){
-      console.log(err)
-    })
-  }
-render() {
+    axios
+      .post("/api/results/getresults", {
+        user_id: this.props.auth.user.id
+      })
+      .then(res => {
+        this.setState({ previousresults: res.data });
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
+  };
+
+  printResults = () => {
+    console.log(this.state.previousresults);
+  };
+  render() {
     const { user } = this.props.auth;
-return (
+    return (
       <div style={{ height: "75vh" }} className="container valign-wrapper">
         <div className="row">
           <div className="col s12 center-align">
             <h4>
-              <b>Hey there,</b> {user.username.split(" ")[0]}<br/>
+              <b>Hey there,</b> {user.username.split(" ")[0]}
+              <br />
               Your email is: {user.email}
             </h4>
             {this.state.previousresults.map((result, index) => {
-              return result.results.map((muscle, key) => {
-                console.log(muscle[0])
-                return (<p key={key}>{muscle[0]}</p>);
-              })
+              return (
+                <div key={index}>
+                  <table className="resultstable">
+                    <tr>
+                      <th>
+                        <b>Muscle</b>
+                      </th>
+                    </tr>
+                    {result.results.map((muscle, key) => {
+                      return <tr><td >{muscle[0]}</td></tr>;
+                    })}
+                  </table><br/>
+                </div>
+              );
             })}
+            <button onClick={this.printResults}>Print</button>
             <button
               style={{
                 width: "150px",
