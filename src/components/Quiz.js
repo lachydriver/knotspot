@@ -26,8 +26,7 @@ class Quiz extends React.Component {
     options: [],
     quizEnd: false,
     disabled: true,
-    diagram: "front",
-    results: []
+    diagram: "front"
     //results: {},
     //score: 0
   };
@@ -486,16 +485,23 @@ class Quiz extends React.Component {
   };
 
   saveResults = () => {
-/*     console.log(this.results)
+    var re = this.results;
+    var ordered = [];
+    for (var r in re) {
+      ordered.push([r, re[r]]);
+    }
+    ordered.sort(function(a, b) {
+      return a[1] - b[1];
+    });
+    var final = ordered.reverse().slice(0, 4);
     axios.post("/api/results/saveresults", {
       user_id: this.props.auth.user.id,
-      results: this.results
+      results: final
     }).then(function(res){
       console.log(res)
     }).catch(function(err) {
       console.log(err)
-    }) */
-    console.log(this.state.results)
+    })
   };
 
   determineButtons = () => {

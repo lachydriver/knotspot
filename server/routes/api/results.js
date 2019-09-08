@@ -7,6 +7,9 @@ router.post("/saveresults", (req, res) => {
     user_id = req.body.user_id;
     results = req.body.results;
 
+    console.log(results);
+    console.log(user_id);
+
     const newResult = new Result({
         user_id: user_id,
         results: results
