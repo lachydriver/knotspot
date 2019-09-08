@@ -8,9 +8,9 @@ class Profile extends Component {
   constructor() {
     super();
     this.state = {
-      previousresults: []
+      previousresults: [],
+      error: ""
     };
-    this.printResults = this.printResults.bind(this);
   }
 
   onLogoutClick = e => {
@@ -31,14 +31,13 @@ class Profile extends Component {
       .then(res => {
         this.setState({ previousresults: res.data });
       })
-      .catch(function(err) {
-        console.log(err);
+      .catch(err => {
+        if(err.response.status === 404){
+          this.setState({error: "No Saved Results Found"})
+        }
       });
   };
 
-  printResults = () => {
-    console.log(this.state.previousresults);
-  };
   render() {
     const { user } = this.props.auth;
     return (
@@ -50,6 +49,7 @@ class Profile extends Component {
               <br />
               Your email is: {user.email}
             </h4>
+            {this.state.error}
             {this.state.previousresults.map((result, index) => {
               return (
                 <div key={index}>
@@ -65,8 +65,7 @@ class Profile extends Component {
                   </table><br/>
                 </div>
               );
-            })}
-            <button onClick={this.printResults}>Print</button>
+            })}<br/>
             <button
               style={{
                 width: "150px",
