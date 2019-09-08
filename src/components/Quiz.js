@@ -494,6 +494,7 @@ class Quiz extends React.Component {
       return a[1] - b[1];
     });
     var final = ordered.reverse().slice(0, 4);
+    console.log(final)
     axios.post("/api/results/saveresults", {
       user_id: this.props.auth.user.id,
       results: final

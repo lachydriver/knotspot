@@ -18,4 +18,24 @@ router.post("/saveresults", (req, res) => {
     newResult.save().then(result => res.json(result)).catch(err => console.log(err));
 });
 
+router.post("/getresults", (req, res) => {
+    user_id = req.body.user_id;
+
+    results = {};
+
+    Result.find({user_id: user_id}, function(err, data) {
+        if(err){
+            console.log(err);
+            return;
+        }
+
+        if(data.length === 0){
+            return res.status(404).json({ results: "No Results Found"})
+        } else {
+            res.json(data)
+        }
+
+    })
+})
+
 module.exports = router;
