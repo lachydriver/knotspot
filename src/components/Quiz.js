@@ -545,9 +545,7 @@ class Quiz extends React.Component {
         </button>
       );
     } else {
-      return (
-        <p>Sign in to save your results</p>
-      )
+      return <p>Sign in to save your results</p>;
     }
   };
 
@@ -693,7 +691,80 @@ class Quiz extends React.Component {
     ) {
       return (
         <div>
-          <img src={backdiagram} />
+          <img src={backdiagram} usemap="#back-image-map" />
+
+          <map name="back-image-map">
+            <area
+              target=""
+              alt="backofshoulder"
+              title="backofshoulder"
+              id="Back of shoulder"
+              onClick={e => this.buttonPressed(e)}
+              href=""
+              coords="91,121,68,132,63,160,119,152,200,155,224,152,217,132,182,119"
+              shape="poly"
+            />
+            <area
+              target=""
+              alt="middleback"
+              title="middleback"
+              id="Middle back"
+              onClick={e => this.buttonPressed(e)}
+              href=""
+              coords="92,189,201,187,193,207,190,229,100,229,98,213"
+              shape="poly"
+            />
+            <area
+              target=""
+              alt="lowerback"
+              title="lowerback"
+              id="Lower back"
+              onClick={e => this.buttonPressed(e)}
+              href=""
+              coords="100,231,190,232,198,279,90,282"
+              shape="poly"
+            />
+            <area
+              target=""
+              alt="backofknee"
+              title="backofknee"
+              id="Back of knee"
+              onClick={e => this.buttonPressed(e)}
+              href=""
+              coords="89,440,86,485,125,487,121,471,128,443"
+              shape="poly"
+            />
+            <area
+              target=""
+              alt="backofknee"
+              title="backofknee"
+              id="Back of knee"
+              onClick={e => this.buttonPressed(e)}
+              href=""
+              coords="161,446,164,466,162,487,203,489,202,467,200,446"
+              shape="poly"
+            />
+            <area
+              target=""
+              alt="hips"
+              title="hips"
+              id="Hips"
+              onClick={e => this.buttonPressed(e)}
+              href=""
+              coords="88,285,200,282,205,324,82,332"
+              shape="poly"
+            />
+            <area
+              target=""
+              alt="behindscapula"
+              title="behindscapula"
+              id="Behind scapula"
+              onClick={e => this.buttonPressed(e)}
+              href=""
+              coords="118,153,119,186,164,185,164,156"
+              shape="poly"
+            />
+          </map>
         </div>
       );
     }

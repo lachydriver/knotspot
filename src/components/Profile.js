@@ -78,6 +78,9 @@ class Profile extends Component {
             >
               Logout
             </button>
+            <Link to="/" className="retakebutton">
+              Home
+            </Link>
             </div>
           </div>
     );
