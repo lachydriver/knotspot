@@ -2,9 +2,7 @@ import React from "react";
 import { QuizQuest } from "./QuizQuest";
 import diagram from "../content/img/Front.png";
 import backdiagram from "../content/img/Back.png";
-import { Link } from "react-router-dom";
 import axios from "axios";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Helmet } from "react-helmet";
 
@@ -559,7 +557,7 @@ class Quiz extends React.Component {
               src={diagram}
               useMap="#image-map"
               className="diagramimg"
-              alt="bodyimage"
+              alt="Front of Body"
             />
             <div className="boneselector"></div>
           </div>
@@ -692,7 +690,11 @@ class Quiz extends React.Component {
     ) {
       return (
         <div>
-          <img src={backdiagram} usemap="#back-image-map" />
+          <img
+            src={backdiagram}
+            usemap="#back-image-map"
+            alt="Back of Body"
+          />
 
           <map name="back-image-map">
             <area
