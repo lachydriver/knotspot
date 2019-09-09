@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { Helmet } from "react-helmet";
 
 class Quiz extends React.Component {
   constructor() {
@@ -801,6 +802,9 @@ class Quiz extends React.Component {
       //var top_result = this.ordered.slice(0, 2)
       return (
         <div className="End">
+          <Helmet>
+            <title>Knot Bot - Results</title>
+          </Helmet>
           <h2>Finished Diagnostic</h2>
           <h4>The most likely muscle strain are: </h4>
           <table className="resultstable">
@@ -855,6 +859,9 @@ class Quiz extends React.Component {
 
     return (
       <div className="App">
+        <Helmet>
+          <title>Knot Bot - Quiz</title>
+        </Helmet>
         <h2>
           Question {this.state.currentQuestion + 1}/7: {questions}
         </h2>

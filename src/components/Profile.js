@@ -5,6 +5,7 @@ import { logoutUser } from "./../actions/authActions";
 import { Link } from 'react-router-dom';
 import axios from "axios";
 import moment from "moment";
+import { Helmet } from "react-helmet";
 
 class Profile extends Component {
   constructor() {
@@ -46,6 +47,9 @@ class Profile extends Component {
     const { user } = this.props.auth;
     return (
       <div className="page-container">
+        <Helmet>
+          <title>Knot Bot - Profile</title>
+        </Helmet>
         <div className="container">
             <h4>
               <b>Hey there,</b> {user.username.split(" ")[0]}

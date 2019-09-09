@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "./../actions/authActions";
 import classnames from "classnames";
+import { Helmet } from "react-helmet";
 
 class Login extends React.Component {
   constructor() {
@@ -14,7 +15,7 @@ class Login extends React.Component {
       password: "",
       errors: {}
     };
-  };
+  }
 
   componentDidMount() {
     // If logged in and user navigates to Login page, should redirect them to dashboard
@@ -53,8 +54,12 @@ class Login extends React.Component {
     const { errors } = this.state;
     return (
       <div className="form-root">
+        <Helmet>
+          <title>Knot Bot - Login</title>
+        </Helmet>
+
         <Link to="/" className="profile-button retakebutton">
-      Home
+          Home
         </Link>
         <div className="form">
           <div className="PageSwitcher">
@@ -83,7 +88,8 @@ class Login extends React.Component {
                     })}
                     value={this.state.username}
                     onChange={this.onChange}
-                  /><br/>
+                  />
+                  <br />
                   <span className="red-text">
                     {errors.username}
                     {errors.usernamenotfound}
@@ -103,7 +109,8 @@ class Login extends React.Component {
                     id="password"
                     value={this.state.password}
                     onChange={this.onChange}
-                  /><br/>
+                  />
+                  <br />
                   <span className="red-text">
                     {errors.password}
                     {errors.passwordincorrect}

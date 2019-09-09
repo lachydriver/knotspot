@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "./../actions/authActions";
 import  classnames  from "classnames";
-import { throwStatement } from "@babel/types";
+import { Helmet } from 'react-helmet';
 
 class Register extends React.Component {
   constructor() {
@@ -58,6 +58,9 @@ class Register extends React.Component {
 
     return (
       <div className="form-root">
+        <Helmet>
+          <title>Knot Bot - Register</title>
+        </Helmet>
         <div className="formreg">
           <div className="PageSwitcher">
             <NavLink
