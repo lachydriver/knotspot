@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { logoutUser } from "./../actions/authActions";
 import { Link } from 'react-router-dom';
 import axios from "axios";
+import moment from "moment";
 
 class Profile extends Component {
   constructor() {
@@ -58,7 +59,7 @@ class Profile extends Component {
                   <table className="resultstable">
                     <tr>
                       <th>
-                        <b>Muscle</b>
+                        <b>Muscle</b> - {moment(result.createdAt).format('DD/MM/YYYY - h:mm:ss')}
                       </th>
                     </tr>
                     {result.results.map((muscle, key) => {
