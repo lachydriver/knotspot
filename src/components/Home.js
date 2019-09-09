@@ -1,17 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import robot from "../content/img/robot2.png";
-
+import { connect } from  "react-redux";
 
 
 class Home extends React.Component {
+
+  displayButton = () => {
+    if(this.props.auth.isAuthenticated === true){
+    return(<Link to="/profile" className="profile-button retakebutton">
+      Profile
+    </Link>)
+    } else {
+    return(<Link to="/login" className="profile-button retakebutton">
+      Login
+    </Link>)
+    }
+  }
+
   render() {
     return (
 
       <div className="homepage">
-            <Link to="/login" className="profile-button retakebutton">
-            Login
-            </Link>
+            {this.displayButton()}
 
           <div className="start">
 
@@ -42,4 +53,8 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps)(Home);

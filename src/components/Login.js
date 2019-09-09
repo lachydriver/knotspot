@@ -83,7 +83,7 @@ class Login extends React.Component {
                     })}
                     value={this.state.username}
                     onChange={this.onChange}
-                  />
+                  /><br/>
                   <span className="red-text">
                     {errors.username}
                     {errors.usernamenotfound}
@@ -103,7 +103,7 @@ class Login extends React.Component {
                     id="password"
                     value={this.state.password}
                     onChange={this.onChange}
-                  />
+                  /><br/>
                   <span className="red-text">
                     {errors.password}
                     {errors.passwordincorrect}

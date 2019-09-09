@@ -87,8 +87,8 @@ class Register extends React.Component {
                     error={errors.username}
                     value={this.state.username}
                     onChange={this.onChange}
-                  />
-                  <span className="red-text">{errors.name}</span>
+                  /><br/>
+                  <span className="red-text">{errors.username}</span>
                 </div>
 
                 <div className="inputs">
@@ -105,7 +105,7 @@ class Register extends React.Component {
                     })}
                     value={this.state.email}
                     onChange={this.onChange}
-                  />
+                  /><br/>
                   <span className="red-text">{errors.email}</span>
                 </div>
 
@@ -123,7 +123,7 @@ class Register extends React.Component {
                     error={errors.password}
                     value={this.state.password}
                     onChange={this.onChange}
-                  />
+                  /><br/>
                   <span className="red-text">{errors.password}</span>
                 </div>
               </div>

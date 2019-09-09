@@ -59,7 +59,7 @@ class Profile extends Component {
                   <table className="resultstable">
                     <tr>
                       <th>
-                        <b>Muscle</b> - {moment(result.createdAt).format('DD/MM/YYYY - h:mm:ss')}
+                        <b>Muscle Test</b> - {moment(result.createdAt).format('DD/MM/YYYY - h:mm:ssa')}
                       </th>
                     </tr>
                     {result.results.map((muscle, key) => {
