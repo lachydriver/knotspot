@@ -5,18 +5,6 @@ import {connect} from 'react-redux';
 
 class QuizContainer extends React.Component {
 
-  displayButton = () => {
-    if(this.props.auth.isAuthenticated === true){
-    return(<Link to="/profile" className="profile-button retakebutton">
-      Profile
-    </Link>)
-    } else {
-    return(<Link to="/login" className="profile-button retakebutton">
-      Login
-    </Link>)
-    }
-  }
-
   componentDidMount(){
     
   }
@@ -24,7 +12,6 @@ class QuizContainer extends React.Component {
   render() {
     return (
       <div className="page-container">
-        {this.displayButton()}
         <div className="container">
           <Quiz />
         </div>
