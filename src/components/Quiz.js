@@ -898,9 +898,6 @@ class Quiz extends React.Component {
           {currentQuestion !== 0 && (
             <button onClick={this.prevQuestion}>Back</button>
           )}
-          {currentQuestion === QuizQuest.length - 1 && (
-            <button onClick={this.finishHandler}>Finish</button>
-          )}
         </div>
         <Link to="/" className="retakebutton homebutton">
           Home
