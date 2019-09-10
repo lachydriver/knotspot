@@ -373,6 +373,26 @@ p{
   color: white;
 }
 
+.register-button {
+  top: 0;
+  right: 110px;
+  position: absolute;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 30px;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  background-color: #fff;
+  border: 0;
+  outline: 0;
+  box-shadow: 0 5px 10px 0 rgba(205, 209, 215, 0.8);
+  background: linear-gradient(to right, rgb(12, 77, 255), #16bffd);
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+}
+
 .homebutton {
   bottom: -10px;
   left: -10px;

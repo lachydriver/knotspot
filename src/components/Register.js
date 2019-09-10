@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { registerUser } from "./../actions/authActions";
 import  classnames  from "classnames";
 import { Helmet } from 'react-helmet';
+import { Link } from 'react-router-dom';
 
 class Register extends React.Component {
   constructor() {
@@ -61,6 +62,9 @@ class Register extends React.Component {
         <Helmet>
           <title>Knot Spot - Register</title>
         </Helmet>
+        <Link to="/" className="profile-button retakebutton">
+            Home
+        </Link>
         <div className="formreg">
           <div className="PageSwitcher">
             <NavLink

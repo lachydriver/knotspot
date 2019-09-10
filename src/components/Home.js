@@ -14,9 +14,14 @@ class Home extends React.Component {
       );
     } else {
       return (
-        <Link to="/login" className="profile-button retakebutton">
-          Login
-        </Link>
+        <div>
+          <Link to="/login" className="profile-button retakebutton">
+            Login
+          </Link><br/>
+          <Link to="/register" className="register-button retakebutton">
+            Register
+          </Link>
+        </div>
       );
     }
   };
