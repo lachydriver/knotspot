@@ -862,7 +862,7 @@ class Quiz extends React.Component {
     return (
       <div className="App">
         <Helmet>
-          <title>Knot Bot - Quiz</title>
+          <title>Knot Spot - Quiz</title>
         </Helmet>
         <h2>
           Question {this.state.currentQuestion + 1}/7: {questions}

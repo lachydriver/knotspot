@@ -355,8 +355,8 @@ p{
 }
 
 .profile-button {
-  top: 10px;
-  right: 10px;
+  top: 0;
+  right: 0;
   position: absolute;
   font-size: 12px;
   cursor: pointer;

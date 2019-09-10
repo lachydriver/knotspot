@@ -28,11 +28,11 @@ class Home extends React.Component {
 
         <div className="start">
           <Helmet>
-            <title>Knot Bot - Home</title>
+            <title>Knot Spot - Home</title>
           </Helmet>
 
-          <h1>Knot Bot</h1>
-          <img src={robot} alt="robot" />
+          <h1>Knot Spot</h1>
+          {/*<img src={robot} alt="robot" />*/}
           <p className="fronttext">
             Welcome to the Muscle Strain Diagnostic Software. This software is
             used to determine the cause of any specific pain you have in your

@@ -55,7 +55,7 @@ class Login extends React.Component {
     return (
       <div className="form-root">
         <Helmet>
-          <title>Knot Bot - Login</title>
+          <title>Knot Spot - Login</title>
         </Helmet>
 
         <Link to="/" className="profile-button retakebutton">
@@ -69,6 +69,13 @@ class Login extends React.Component {
               className="PageSwitcher__Item"
             >
               Register
+            </NavLink><br/>
+            <NavLink
+              to="/forgotpassword"
+              activeClassName="PageSwitcher__Item--Active"
+              className="PageSwitcher__Item"
+            >
+              Forgot Password
             </NavLink>
           </div>
           <div className="login">
@@ -121,6 +128,7 @@ class Login extends React.Component {
               <button type="submit" className="login-btn">
                 Login
               </button>
+              <br />
             </form>
           </div>
         </div>

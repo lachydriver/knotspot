@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from './components/Home';
 import Login from './components/Login';
 import Register from './components/Register';
+import ForgotPassword from './components/ForgotPassword';
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Profile from "./components/Profile";
 import jwt_decode from "jwt-decode";
@@ -44,6 +45,7 @@ function App() {
         <Route path="/quiz" component={QuizContainer}/>
         <Route path="/login" component={Login}/>
         <Route path="/register" component={Register}/>
+        <Route path="/forgotpassword" component={ForgotPassword}/>
         <PrivateRoute exact path="/profile" component={Profile} />
         </Switch>
         

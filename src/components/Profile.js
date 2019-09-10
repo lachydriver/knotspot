@@ -48,7 +48,7 @@ class Profile extends Component {
     return (
       <div className="page-container">
         <Helmet>
-          <title>Knot Bot - Profile</title>
+          <title>Knot Spot - Profile</title>
         </Helmet>
         <div className="container">
             <h4>

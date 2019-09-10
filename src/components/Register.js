@@ -59,7 +59,7 @@ class Register extends React.Component {
     return (
       <div className="form-root">
         <Helmet>
-          <title>Knot Bot - Register</title>
+          <title>Knot Spot - Register</title>
         </Helmet>
         <div className="formreg">
           <div className="PageSwitcher">
