@@ -45,8 +45,7 @@ class Home extends React.Component {
             <br />
             To use this quiz, please press the below start button and follow the
             questions all the way until the end. Click on your answer to the
-            question and then click the next button. On the last question please
-            press the "Finish" button.
+            question to continue to the next question.
             <br />
             At the end of the quiz you will receive a list of muscles that will
             be the most likely cause for your pain, and any self help that might
