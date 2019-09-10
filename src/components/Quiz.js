@@ -805,7 +805,7 @@ class Quiz extends React.Component {
             <title>Knot Bot - Results</title>
           </Helmet>
           <h2>Finished Diagnostic</h2>
-          <h4>The most likely muscle strain are: </h4>
+          <h4>The most likely muscle strain is: </h4>
           <table className="resultstable">
             <tr>
               <th style={listyle}>
