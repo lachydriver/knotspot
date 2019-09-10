@@ -5,6 +5,7 @@ import backdiagram from "../content/img/Back.png";
 import axios from "axios";
 import { connect } from "react-redux";
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 
 class Quiz extends React.Component {
   constructor() {
@@ -690,11 +691,7 @@ class Quiz extends React.Component {
     ) {
       return (
         <div>
-          <img
-            src={backdiagram}
-            usemap="#back-image-map"
-            alt="Back of Body"
-          />
+          <img src={backdiagram} usemap="#back-image-map" alt="Back of Body" />
 
           <map name="back-image-map">
             <area
@@ -905,6 +902,9 @@ class Quiz extends React.Component {
             <button onClick={this.finishHandler}>Finish</button>
           )}
         </div>
+        <Link to="/" className="retakebutton homebutton">
+          Home
+        </Link>
       </div>
     );
   }

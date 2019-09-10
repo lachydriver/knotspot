@@ -373,3 +373,9 @@ p{
   background-size: 200% auto;
   color: white;
 }
+
+.homebutton {
+  bottom: -10px;
+  left: -10px;
+  position: absolute;
+}
