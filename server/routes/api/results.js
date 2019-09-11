@@ -36,6 +36,19 @@ router.post("/getresults", (req, res) => {
         }
 
     })
+});
+
+router.post("/deleteresult", (req, res) => {
+    _id = req.body._id;
+    console.log(_id)
+
+    Result.findByIdAndRemove(_id, function(err, data) {
+        if(!err){
+            console.log("Deleted successfully")
+        } else {
+            console.log(err)
+        }
+    })
 })
 
 module.exports = router;

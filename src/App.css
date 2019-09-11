@@ -176,6 +176,21 @@ h4 {
   float: right;
 }
 
+.diagramcontainer {
+  position: relative;
+}
+
+.tooltip {
+  position: absolute;
+  color: #fff;
+  padding: 5px;
+  background: rgba(0,0,0,0.8);
+  transform: translate3d(-50%, -50%, 0);
+  border-radius: 5px;
+  pointer-events: none;
+  z-index: 1000;
+}
+
 area:hover {
   cursor: pointer;
 }
@@ -397,4 +412,17 @@ p{
   bottom: -10px;
   left: -10px;
   position: absolute;
+}
+
+.delete {
+  background-color: rgb(173, 0, 0);
+  color: white;
+  border: 0;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px 0 rgb(51, 51, 51);
+}
+
+.delete:hover {
+  cursor: pointer;
+  background-color: red;
 }
