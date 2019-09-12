@@ -6,6 +6,7 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import ImageMapper from "react-image-mapper"
 
 class Quiz extends React.Component {
   constructor() {
@@ -27,7 +28,8 @@ class Quiz extends React.Component {
     quizEnd: false,
     disabled: true,
     diagram: "front",
-    saveresultmessage: ""
+    saveresultmessage: "",
+    hoveredMuscle: null
   };
 
   results = {};
@@ -470,8 +472,7 @@ class Quiz extends React.Component {
   };
 
   buttonPressed = e => {
-    e.preventDefault();
-    let tag = e.target.id;
+    let tag = e._id;
     this.checkAnswer(tag);
   };
 
@@ -549,140 +550,43 @@ class Quiz extends React.Component {
     }
   };
 
+  enterArea(area){
+    this.setState({hoveredMuscle: area})
+  }
+
+  leaveArea(area){
+    this.setState({hoveredMuscle: null})
+  }
+
+  getTipPosition(area) {
+    return { top: `${area.center[1]}px`, left: `${area.center[0]}px` };
+  }
+
   showDiagram = () => {
+    const MAP = {
+      name: "my-map",
+      areas: [
+        { name: "Neck", _id: "Neck", shape: "poly", coords: [133,80,113,111,193,111,166,84], fillColor: "rgba(255, 255, 255, 0.8)"},
+        { name: "Top of shoulders", _id: "Top of shoulders", shape: "poly", coords: [73,114,224,115,229,152,152,149,70,152], fillColor: "rgba(255, 255, 255, 0.8)"},
+        { name: "Ribs", _id: "Ribs", shape: "poly", coords: [94,152,101,266,199,264,206,160], fillColor: "rgba(255, 255, 255, 0.8)"},
+        { name: "Hips", _id: "Hips", shape: "poly", coords: [98,269,204,267,209,309,90,311], fillColor: "rgba(255, 255, 255, 0.8)"},
+        { name: "Calf", _id: "Calf", shape: "poly", coords: [159,509,168,549,190,556,212,472,207,408,168,428], fillColor: "rgba(255, 255, 255, 0.8)"},
+        { name: "Calf", _id: "Calf", shape: "poly", coords: [96,422,92,477,106,539,136,539,137,511,131,434], fillColor: "rgba(255, 255, 255, 0.8)"},
+        { name: "Thighs", _id: "Thighs/quads", shape: "poly", coords: [89,319,91,405,133,426,148,320], fillColor: "rgba(255, 255, 255, 0.8)"},
+        { name: "Thighs", _id: "Thighs/quads", shape: "poly", coords: [157,323,211,318,207,402,167,420], fillColor: "rgba(255, 255, 255, 0.8)"},
+        { name: "Foot", _id: "Foot", shape: "poly", coords: [169,562, 188,570, 200,605, 164,605], fillColor: "rgba(255, 255, 255, 0.8)"},
+        { name: "Foot", _id: "Foot", shape: "poly", coords: [131,565, 113,577, 107,591, 101,603, 138,606], fillColor: "rgba(255, 255, 255, 0.8)"},
+        { name: "Bicep", _id: "Biceps", shape: "poly", coords: [63,161,46,215,72,223,89,184,92,158], fillColor: "rgba(255, 255, 255, 0.8)"},
+        { name: "Bicep", _id: "Biceps", shape: "poly", coords: [208,167,214,192,226,217,248,206,239,163], fillColor: "rgba(255, 255, 255, 0.8)"},
+      ]
+    }
+
     if (this.state.currentQuestion === 0 && this.state.diagram === "front") {
       return (
-        <div>
-          <div>
-            <img
-              src={diagram}
-              useMap="#image-map"
-              className="diagramimg"
-              alt="Front of Body"
-            />
-            <div className="boneselector"></div>
-          </div>
-
-          <map name="image-map">
-            <area
-              target=""
-              alt="Neck"
-              title="Neck"
-              id="Neck"
-              onClick={e => this.buttonPressed(e)}
-              href=""
-              coords="133,80,113,111,193,111,166,84"
-              shape="poly"
-            />
-            <area
-              target=""
-              alt="Top of shoulders"
-              title="Top of shoulders"
-              id="Top of shoulders"
-              onClick={e => this.buttonPressed(e)}
-              href=""
-              coords="73,114,224,115,229,152,152,149,70,152"
-              shape="poly"
-            />
-            <area
-              target=""
-              alt="Ribs"
-              title="Ribs"
-              id="Ribs"
-              onClick={e => this.buttonPressed(e)}
-              href=""
-              coords="94,152,101,266,199,264,206,160"
-              shape="poly"
-            />
-            <area
-              target=""
-              alt="Hips"
-              title="Hips"
-              id="Hips"
-              onClick={e => this.buttonPressed(e)}
-              href=""
-              coords="98,269,204,267,209,309,90,311"
-              shape="poly"
-            />
-            <area
-              target=""
-              alt="Calf"
-              title="Calf"
-              id="Calf"
-              onClick={e => this.buttonPressed(e)}
-              href=""
-              coords="159,509,168,549,190,556,212,472,207,408,168,428"
-              shape="poly"
-            />
-            <area
-              target=""
-              alt="Calf"
-              title="Calf"
-              id="Calf"
-              onClick={e => this.buttonPressed(e)}
-              href=""
-              coords="96,422,92,477,106,539,136,539,137,511,131,434"
-              shape="poly"
-            />
-            <area
-              target=""
-              alt="Thighs/Quads"
-              title="Thighs/Quads"
-              id="Thighs/quads"
-              onClick={e => this.buttonPressed(e)}
-              href=""
-              coords="89,319,91,405,133,426,148,320"
-              shape="poly"
-            />
-            <area
-              target=""
-              alt="Thighs/Quads"
-              title="Thighs/Quads"
-              id="Thighs/quads"
-              onClick={e => this.buttonPressed(e)}
-              href=""
-              coords="157,323,211,318,207,402,167,420"
-              shape="poly"
-            />
-            <area
-              alt="Foot"
-              title="Foot"
-              href=""
-              id="Foot"
-              onClick={e => this.buttonPressed(e)}
-              coords="169,562 188,570 200,605 164,605 "
-              shape="polygon"
-            />
-            <area
-              alt="Foot"
-              title="Foot"
-              href=""
-              id="Foot"
-              onClick={e => this.buttonPressed(e)}
-              coords="131,565 113,577 107,591 101,603 138,606 "
-              shape="polygon"
-            />
-            <area
-              target=""
-              alt="Biceps"
-              title="Biceps"
-              id="Biceps"
-              onClick={e => this.buttonPressed(e)}
-              href=""
-              coords="63,161,46,215,72,223,89,184,92,158"
-              shape="poly"
-            />
-            <area
-              target=""
-              alt="Biceps"
-              title="Biceps"
-              id="Biceps"
-              onClick={e => this.buttonPressed(e)}
-              href=""
-              coords="208,167,214,192,226,217,248,206,239,163"
-              shape="poly"
-            />
-          </map>
+        <div className="diagramcontainer">
+        <ImageMapper src={diagram} map={MAP} onClick={e => this.buttonPressed(e)} width={300} imgWidth={302} className="diagramimage" onMouseEnter={area => this.enterArea(area)} onMouseLeave={area => this.leaveArea(area)}/>
+        {this.state.hoveredMuscle &&
+        <span className="tooltip" style={{...this.getTipPosition(this.state.hoveredMuscle)}}>{this.state.hoveredMuscle && this.state.hoveredMuscle.name}</span>}
         </div>
       );
     } else if (
