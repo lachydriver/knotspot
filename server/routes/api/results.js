@@ -36,6 +36,20 @@ router.post("/getresults", (req, res) => {
         }
 
     })
+});
+
+router.post("/deleteresult", (req, res) => {
+    _id = req.body._id;
+    console.log(_id)
+
+    Result.find({_id: _id}, function(err, data) {
+        if(err){
+            console.log(err);
+            return;
+        } else {
+            console.log(data)
+        }
+    })
 })
 
 module.exports = router;

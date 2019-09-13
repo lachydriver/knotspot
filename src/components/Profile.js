@@ -14,6 +14,7 @@ class Profile extends Component {
       previousresults: [],
       error: ""
     };
+    this.deleteResult = this.deleteResult.bind(this)
   }
 
   onLogoutClick = e => {
@@ -43,6 +44,13 @@ class Profile extends Component {
       });
   };
 
+  deleteResult = (id) => {
+    console.log("Hey")
+    axios.post("/api/results/deleteresult", {
+      _id: id
+    }).then(res => {console.log(res)}).catch(err => {console.log(err)})
+  }
+
   render() {
     const { user } = this.props.auth;
     return (
@@ -63,7 +71,7 @@ class Profile extends Component {
                   <table className="resultstable">
                     <tr>
                       <th>
-                        <b>Muscle Test</b> - {moment(result.createdAt).format('DD/MM/YYYY - h:mm:ssa')}
+                        <b>Muscle Test</b> - {moment(result.createdAt).format('DD/MM/YYYY - h:mm:ssa')} <button onClick={() => this.deleteResult(result._id)}>Delete</button>
                       </th>
                     </tr>
                     {result.results.map((muscle, key) => {
