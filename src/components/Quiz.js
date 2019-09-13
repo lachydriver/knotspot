@@ -466,7 +466,8 @@ class Quiz extends React.Component {
       userAnswer_4: null,
       userAnswer_5: null,
       userAnswer_6: null,
-      userAnswer_7: null
+      userAnswer_7: null,
+      saveresultmessage: false
     });
     this.results = {};
   };
