@@ -28,6 +28,7 @@ class Profile extends Component {
   }
 
   getResults = () => {
+    console.log("got results")
     axios
       .post("/api/results/getresults", {
         user_id: this.props.auth.user.id
@@ -37,7 +38,8 @@ class Profile extends Component {
       })
       .catch(err => {
         if(err.response.status === 404){
-          this.setState({error: "No Saved Results Found"})
+          this.setState({error: "No Saved Results Found"});
+          this.setState({previousresults: []})
         } else {
           console.log(err)
         }
@@ -47,12 +49,11 @@ class Profile extends Component {
   deleteResult = (id) => {
     axios.post("/api/results/deleteresult", {
       _id: id
-    }).then(this.refreshResults()).catch(err => {console.log(err)})
-  }
-
-  refreshResults = () => {
-    this.setState({previousresults: []});
-    this.getResults()
+    }).then(this.getResults()).catch(err => {if(err.response.status === 404){
+      this.getResults();
+    } else {
+      console.log(err);
+    }})
   }
 
   render() {

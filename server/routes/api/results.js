@@ -7,9 +7,6 @@ router.post("/saveresults", (req, res) => {
     user_id = req.body.user_id;
     results = req.body.results;
 
-    console.log(results);
-    console.log(user_id);
-
     const newResult = new Result({
         user_id: user_id,
         results: results
@@ -40,13 +37,14 @@ router.post("/getresults", (req, res) => {
 
 router.post("/deleteresult", (req, res) => {
     _id = req.body._id;
-    console.log(_id)
 
     Result.findByIdAndRemove(_id, function(err, data) {
-        if(!err){
-            console.log("Deleted successfully")
+        if(err){
+            console.log("not found!")
+            res.status(404).json({results: "No results found"});
         } else {
-            console.log(err)
+            console.log("found!")
+            res.send(data);
         }
     })
 })
