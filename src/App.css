@@ -413,3 +413,16 @@ p{
   left: -10px;
   position: absolute;
 }
+
+.delete {
+  background-color: rgb(173, 0, 0);
+  color: white;
+  border: 0;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px 0 rgb(51, 51, 51);
+}
+
+.delete:hover {
+  cursor: pointer;
+  background-color: red;
+}
