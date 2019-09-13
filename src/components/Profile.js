@@ -45,10 +45,14 @@ class Profile extends Component {
   };
 
   deleteResult = (id) => {
-    console.log("Hey")
     axios.post("/api/results/deleteresult", {
       _id: id
-    }).then(res => {console.log(res)}).catch(err => {console.log(err)})
+    }).then(this.refreshResults()).catch(err => {console.log(err)})
+  }
+
+  refreshResults = () => {
+    this.setState({previousresults: []});
+    this.getResults()
   }
 
   render() {
