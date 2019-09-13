@@ -28,7 +28,7 @@ class Quiz extends React.Component {
     quizEnd: false,
     disabled: true,
     diagram: "front",
-    saveresultmessage: "",
+    saveresultmessage: false,
     hoveredMuscle: null
   };
 
@@ -503,13 +503,19 @@ class Quiz extends React.Component {
       .then(res => {
         console.log(res);
         this.setState({
-          saveresultmessage: "Result saved successfully to your profile"
+          saveresultmessage: true
         });
       })
       .catch(function(err) {
         console.log(err);
       });
   };
+
+  showSaveMessage = () => {
+    if(this.state.saveresultmessage === true){
+      return(<p>Result has been saved to your <Link to="/profile">profile</Link></p>)
+    }
+  }
 
   determineButtons = () => {
     if (this.state.currentQuestion === 0) {
@@ -540,11 +546,15 @@ class Quiz extends React.Component {
 
   showSaveResultButton = () => {
     if (this.props.auth.isAuthenticated === true) {
+      if(this.state.saveresultmessage === false){
       return (
         <button onClick={this.saveResults} className="retakebutton">
           Save Results
         </button>
       );
+      } else {
+        return("")
+      }
     } else {
       return <p>Sign in to save your results</p>;
     }
@@ -736,7 +746,7 @@ class Quiz extends React.Component {
             Run Another Diagnostic
           </button>
           {this.showSaveResultButton()}
-          <p>{this.state.saveresultmessage}</p>
+          {this.showSaveMessage()}
           <p>
             {" "}
             Looking for treatment? Find an occupational therapist near you from
