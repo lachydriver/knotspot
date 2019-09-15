@@ -80,7 +80,7 @@ class Profile extends Component {
                       </th>
                     </tr>
                     {result.results.map((muscle, key) => {
-                      return <tr><td >{muscle[0]}</td></tr>;
+                      return <tr><td >{muscle[0]} - <Link to={`/information/${muscle[0]}`}>Info</Link></td></tr>;
                     })}
                   </table><br/>
                 </div>
