@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+import { Document, Page } from 'react-pdf';
+import Hamstrings from './Hamstrings.pdf'
+import { pdfjs } from 'react-pdf';
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 class Info extends Component {
     constructor(props){
@@ -9,13 +13,30 @@ class Info extends Component {
     }
 
     componentDidMount(){
-        this.setState({muscle: this.props.match.params.muscle})
+        this.setState({muscle: this.props.match.params.muscle});
+
+    }
+
+    
+
+    renderInfo(){
+        if(this.state.muscle === "Hamstrings"){
+            return(
+                <div className="pdfwrapper">
+                <Document file={Hamstrings} onLoadError={console.error} className="infopdf">
+                    <Page pageNumber={1} className="infopageone"></Page>
+                    <Page pageNumber={2} className="infopagetwo"></Page>
+                </Document>
+                </div>
+            )
+        }
     }
 
     render(){
         return(
-            <div>
-                <p>This is the info page for: {this.state.muscle}</p>
+            <div className="infopage">
+                <h1>{this.state.muscle}</h1>
+                {this.renderInfo()}
             </div>
         )
     }

@@ -426,3 +426,29 @@ p{
   cursor: pointer;
   background-color: red;
 }
+
+.infopage {
+  text-align: center;
+  background-color: white;
+  width: 80%;
+  height: 80vh;
+  border-radius: 20px;
+  box-shadow: 5px 6px 10px;
+  margin: auto;
+  margin-top: 4%;
+}
+
+.infopdf {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.pdfwrapper {
+  width: 100% !important;
+  height: auto !important;
+}
+
+.infopageone {
+
+}
