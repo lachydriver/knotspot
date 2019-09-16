@@ -6,7 +6,19 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
-import ImageMapper from "react-image-mapper"
+import ImageMapper from "react-image-mapper";
+import Modal from 'react-modal';
+
+const customStyles = {
+  content : {
+    top                   : '50%',
+    left                  : '50%',
+    right                 : 'auto',
+    bottom                : 'auto',
+    marginRight           : '-50%',
+    transform             : 'translate(-50%, -50%)'
+  }
+};
 
 class Quiz extends React.Component {
   constructor() {
@@ -14,6 +26,7 @@ class Quiz extends React.Component {
     this.showDiagram = this.showDiagram.bind(this);
     this.determineClass = this.determineClass.bind(this);
     this.determineButtons = this.determineButtons.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
   state = {
     userAnswer_1: null,
@@ -29,8 +42,13 @@ class Quiz extends React.Component {
     disabled: true,
     diagram: "front",
     saveresultmessage: false,
-    hoveredMuscle: null
+    hoveredMuscle: null,
+    isModalOpen: true
   };
+
+  closeModal(){
+    this.setState({isModalOpen: false})
+  }
 
   results = {};
 
@@ -776,6 +794,24 @@ class Quiz extends React.Component {
         <Helmet>
           <title>Knot Spot - Quiz</title>
         </Helmet>
+        <Modal
+          isOpen={this.state.isModalOpen}
+          onRequestClose={this.closeModal}
+          style={customStyles}
+          contentLabel="Example Modal"
+        >
+
+          <h2 ref={subtitle => this.subtitle = subtitle}>Hello</h2>
+          <button onClick={this.closeModal}>close</button>
+          <div>I am a modal</div>
+          <form>
+            <input />
+            <button>tab navigation</button>
+            <button>stays</button>
+            <button>inside</button>
+            <button>the modal</button>
+          </form>
+        </Modal>
         <h2>
           Question {this.state.currentQuestion + 1}/7: {questions}
         </h2>
