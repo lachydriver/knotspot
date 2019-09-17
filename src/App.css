@@ -220,6 +220,10 @@ area:hover {
   color: white;
 }
 
+.reg-btn-false {
+  background-color: grey !important;
+}
+
 .diagram button:hover {
   animation: gradient 5s linear infinite;
   background-position: right center;

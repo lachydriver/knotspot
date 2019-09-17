@@ -4,20 +4,20 @@ import { NavLink, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "./../actions/authActions";
-import  classnames  from "classnames";
-import { Helmet } from 'react-helmet';
-import { Link } from 'react-router-dom';
-import Modal from 'react-modal';
+import classnames from "classnames";
+import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
+import Modal from "react-modal";
 
 const customStyles = {
-  content : {
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    width: '50%',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)',
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    width: "50%",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)"
   }
 };
 
@@ -38,31 +38,37 @@ class Register extends React.Component {
     this.acceptModal = this.acceptModal.bind(this);
   }
 
-  openModal(){
-    this.setState({isModalOpen: true});
+  openModal() {
+    this.setState({ isModalOpen: true });
   }
 
-  closeModal(){
-    this.setState({isModalOpen: false});
+  closeModal() {
+    this.setState({ isModalOpen: false });
   }
 
-  acceptModal(){
-    this.setState({isModalOpen: false});
-    this.setState({termsAccepted: true});
+  acceptModal() {
+    this.setState({ isModalOpen: false });
+    this.setState({ termsAccepted: true });
   }
 
-  termsModal(){
-    return(
+  termsModal() {
+    return (
       <Modal
-      isOpen={this.state.isModalOpen}
-      style={customStyles}
-      contentLabel="Example Modal"
-    >
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br/>
-    <button onClick={this.acceptModal}>Agree</button>
-    </Modal>
-    )
+        isOpen={this.state.isModalOpen}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.
+        <br />
+        <button onClick={this.acceptModal}>Agree</button>
+      </Modal>
+    );
   }
 
   componentDidMount() {
@@ -73,7 +79,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
   }
 
   onChange = e => {
-    this.setState({ [e.target.id]: e.target.value})
+    this.setState({ [e.target.id]: e.target.value });
   };
 
   onSubmit = e => {
@@ -86,7 +92,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
     };
 
     this.props.registerUser(newUser, this.props.history);
-  }
+  };
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
@@ -96,9 +102,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
     }
   }
 
-
   render() {
-
     const { errors } = this.state;
 
     return (
@@ -108,7 +112,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
           <title>Knot Spot - Register</title>
         </Helmet>
         <Link to="/" className="profile-button retakebutton">
-            Home
+          Home
         </Link>
         <div className="formreg">
           <div className="PageSwitcher">
@@ -139,7 +143,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
                     error={errors.username}
                     value={this.state.username}
                     onChange={this.onChange}
-                  /><br/>
+                  />
+                  <br />
                   <span className="red-text">{errors.username}</span>
                 </div>
 
@@ -157,7 +162,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
                     })}
                     value={this.state.email}
                     onChange={this.onChange}
-                  /><br/>
+                  />
+                  <br />
                   <span className="red-text">{errors.email}</span>
                 </div>
 
@@ -175,20 +181,29 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
                     error={errors.password}
                     value={this.state.password}
                     onChange={this.onChange}
-                  /><br/>
+                  />
+                  <br />
                   <span className="red-text">{errors.password}</span>
                 </div>
               </div>
-              <button
-                className="reg-btn"
+              {this.state.termsAccepted ? (
+                <button
+                  className="reg-btn"
+                  type="submit"
+                  onClick={this.onSubmit}
+                >
+                  Register
+                </button>
+              ) : (
+                <button
+                className="reg-btn reg-btn-false"
                 type="submit"
                 onClick={this.onSubmit}
-              >
-                Register
-              </button>
+                disabled
+              >Register</button>
+              )}
             </form>
-            <p>TERMS AND CONDITIONS</p>
-            <button onClick={this.openModal}>Terms</button>
+            <button onClick={this.openModal} className="start-button">Terms</button>
           </div>
         </div>
       </div>
