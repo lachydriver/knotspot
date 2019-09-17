@@ -17,7 +17,7 @@ const customStyles = {
     bottom                : 'auto',
     width: '20%',
     marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
+    transform             : 'translate(-50%, -50%)',
   }
 };
 
@@ -797,7 +797,6 @@ class Quiz extends React.Component {
         </Helmet>
         <Modal
           isOpen={this.state.isModalOpen}
-          onRequestClose={this.closeModal}
           style={customStyles}
           contentLabel="Example Modal"
         >

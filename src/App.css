@@ -178,6 +178,7 @@ h4 {
 
 .diagramcontainer {
   position: relative;
+  z-index: 0;
 }
 
 .tooltip {
