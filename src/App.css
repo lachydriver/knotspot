@@ -178,6 +178,7 @@ h4 {
 
 .diagramcontainer {
   position: relative;
+  z-index: 0;
 }
 
 .tooltip {
@@ -217,6 +218,10 @@ area:hover {
   transition: 0.5s;
   background-size: 200% auto;
   color: white;
+}
+
+.reg-btn-false {
+  background-color: grey !important;
 }
 
 .diagram button:hover {
