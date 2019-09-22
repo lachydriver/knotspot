@@ -5,7 +5,9 @@ const DataSchema = new Schema(
     {
         username: String,
         password: String,
-        email: String
+        email: String,
+        resetPasswordToken: String,
+        resetPasswordExpires: Date
     },
     { timestamps: true}
 )

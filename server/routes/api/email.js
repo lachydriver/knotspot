@@ -18,10 +18,12 @@ router.post("/forgotpassword", (req, res) => {
             console.log("email found");
             const token = crypto.randomBytes(20).toString('hex');
             console.log(token);
-            User.update({
-                resetPasswordToken: token,
-                resetPasswordExpires: Date.now() + 360000,
-            })
+            user.resetPasswordToken = token;
+            user.resetPasswordExpires = Date.now() + 36000;
+            console.log(user);
+            user.save(function(err) {
+                console.log(err);
+            });
         }
     })
 });
