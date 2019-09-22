@@ -4,6 +4,7 @@ const User = require("../../data");
 const express = require("express");
 const router = express.Router();
 const nodemailer = require('nodemailer');
+require('dotenv').config();
 
 // @route forgot password
 router.post("/forgotpassword", (req, res) => {
@@ -28,7 +29,32 @@ router.post("/forgotpassword", (req, res) => {
                 }
             });
 
+            const transporter = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                    user: `${process.env.EMAIL_ADDRESS}`,
+                    pass: `${process.env.EMAIL_PASSWORD}`
+                },
+            });
 
+            const mailOptions = {
+                from: `lachydriver@gmail.com`,
+                to: `${user.email}`,
+                subject: 'Reset Password Link',
+                text:
+                `Your password reset link is: http://localhost:3000/reset/${token}`
+            };
+
+            console.log("Sending email");
+
+            transporter.sendMail(mailOptions, function(err, response) {
+                if(err) {
+                    console.log("Error", err)
+                } else {
+                    console.log("Response: ", response);
+                    res.status(200).json('recovery email sent');
+                };
+            })
         };
     });
 });
