@@ -44,7 +44,7 @@ class Quiz extends React.Component {
     diagram: "front",
     saveresultmessage: false,
     hoveredMuscle: null,
-    isModalOpen: true
+    isModalOpen: null
   };
 
   closeModal(){
@@ -65,6 +65,11 @@ class Quiz extends React.Component {
 
   componentDidMount() {
     this.loadQuiz();
+    if(this.props.auth.isAuthenticated === false){
+      this.setState({isModalOpen: true});
+    } else {
+      this.setState({isModalOpen: false});
+    }
   }
 
   nextQuestion = () => {
