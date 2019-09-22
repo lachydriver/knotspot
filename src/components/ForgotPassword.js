@@ -3,6 +3,18 @@ import Helmet from "react-helmet";
 import { Link, NavLink } from "react-router-dom";
 
 class ForgotPassword extends React.Component {
+  constructor(){
+    super();
+    this.state = {
+      email: ""
+    }
+  };
+
+  handleChange = (e) => {
+    this.setState({email: e.target.value})
+  }
+
+
   render() {
     return (
       <div className="form-root">
@@ -35,6 +47,7 @@ class ForgotPassword extends React.Component {
                     type="text"
                     name="email"
                     id="email"
+                    onChange={this.handleChange}
                   />
                   <br />
                 </div>
