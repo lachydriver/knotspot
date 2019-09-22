@@ -26,8 +26,8 @@ class Info extends Component {
                 <SizeMe monitorHeight refreshRate={128} refreshMode="debounce" render={({ size }) => (
                     <div className="pdfwrapper">
                     <Document file={Hamstrings} onLoadError={console.error} className="infopdf">
-                        <Page pageNumber={1} className="infopageone"></Page>
-                        <Page pageNumber={2} className="infopagetwo"></Page>
+                        <Page width={size.width / 2} pageNumber={1} className="infopageone"></Page>
+                        <Page width={size.width / 2} pageNumber={2} className="infopagetwo"></Page>
                     </Document>
                     </div>
                 )}/>
