@@ -3,6 +3,7 @@ const crypto = require('crypto');
 const User = require("../../data");
 const express = require("express");
 const router = express.Router();
+const nodemailer = require('nodemailer');
 
 // @route forgot password
 router.post("/forgotpassword", (req, res) => {
@@ -22,10 +23,14 @@ router.post("/forgotpassword", (req, res) => {
             user.resetPasswordExpires = Date.now() + 36000;
             console.log(user);
             user.save(function(err) {
-                console.log(err);
+                if(err){
+                    console.log(err);
+                }
             });
-        }
-    })
+
+
+        };
+    });
 });
 
 module.exports = router;
