@@ -9,6 +9,7 @@ import ForgotPassword from './components/ForgotPassword';
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Profile from "./components/Profile";
 import Info from "./components/Info";
+import ResetPassword from  "./components/ResetPassword";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
@@ -48,6 +49,7 @@ function App() {
         <Route path="/register" component={Register}/>
         <Route path="/forgotpassword" component={ForgotPassword}/>
         <Route path="/information/:muscle" component={Info}/>
+        <Route path="/reset" component={ResetPassword}/>
         <PrivateRoute exact path="/profile" component={Profile} />
         </Switch>
         
