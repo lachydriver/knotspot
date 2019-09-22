@@ -5,6 +5,7 @@ import backdiagram from "../content/img/Back.png";
 import axios from "axios";
 import { connect } from "react-redux";
 import { Helmet } from "react-helmet";
+import { SizeMe } from 'react-sizeme';
 import { Link } from "react-router-dom";
 import ImageMapper from "react-image-mapper";
 import Modal from 'react-modal';
@@ -618,11 +619,14 @@ class Quiz extends React.Component {
 
     if (this.state.currentQuestion === 0 && this.state.diagram === "front") {
       return (
-        <div className="diagramcontainer">
-        <ImageMapper src={diagram} map={MAP} onClick={e => this.buttonPressed(e)} width={300} imgWidth={302} className="diagramimage" onMouseEnter={area => this.enterArea(area)} onMouseLeave={area => this.leaveArea(area)}/>
-        {this.state.hoveredMuscle &&
-        <span className="tooltip" style={{...this.getTipPosition(this.state.hoveredMuscle)}}>{this.state.hoveredMuscle && this.state.hoveredMuscle.name}</span>}
-        </div>
+        <SizeMe monitorHeight refreshRate={128} refreshMode="debounce" render={({ size }) => (
+          <div className="diagramcontainer">
+          <ImageMapper src={diagram} map={MAP} onClick={e => this.buttonPressed(e)} width={size.width} imgWidth={302} className="diagramimage" onMouseEnter={area => this.enterArea(area)} onMouseLeave={area => this.leaveArea(area)}/>
+          {this.state.hoveredMuscle &&
+          <span className="tooltip" style={{...this.getTipPosition(this.state.hoveredMuscle)}}>{this.state.hoveredMuscle && this.state.hoveredMuscle.name}</span>}
+          </div>
+        )}/>
+
       );
     } else if (
       this.state.currentQuestion === 0 &&

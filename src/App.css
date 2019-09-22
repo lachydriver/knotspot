@@ -178,6 +178,7 @@ h4 {
 
 .diagramcontainer {
   position: relative;
+  width: 15vw;
   z-index: 0;
 }
 
