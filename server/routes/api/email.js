@@ -1,5 +1,5 @@
 const crypto = require("crypto");
-
+const bcrypt = require("bcryptjs");
 const User = require("../../data");
 const express = require("express");
 const router = express.Router();
@@ -77,5 +77,23 @@ router.get("/reset", (req, res) => {
     }
   });
 });
+
+router.put("/resetpassword", (req, res) => {
+    User.findOne({username: req.body.username}).then(user => {
+        if(!user){
+            res.status(404).send('Username not found')
+        } else {
+            //hash the new password
+            bcrypt.genSalt(10, (err, salt) => {
+                bcrypt.hash(req.body.password, salt, (err, hash) => {
+                    if (err) throw err;
+                    user.password = hash;
+                    user.save().then(user => res.status(200).send('password updated'))
+                    console.log('user password updated')
+                })
+            })
+        }
+    })
+})
 
 module.exports = router;

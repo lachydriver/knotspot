@@ -39,7 +39,17 @@ class ResetPassword extends Component {
       if(this.state.password != this.state.confirmPassword){
           this.setState({passworderror: "Passwords do not match"})
       } else {
-        this.setState({passworderror: "Success"})
+        this.setState({passworderror: ""})
+        Axios.put("/api/email/resetpassword", {
+            username: this.state.username,
+            password: this.state.password
+        }).then(response => {
+            if(response.data.message === "password updated") {
+                console.log("PASSWORD UPDATED SUCCESSFULLY")
+            } 
+        }).catch(err => {
+            console.log(err)
+        })
       }
   }
 
