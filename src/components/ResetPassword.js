@@ -45,7 +45,7 @@ class ResetPassword extends Component {
             password: this.state.password
         }).then(response => {
             if(response.data.message === "password updated") {
-                console.log("PASSWORD UPDATED SUCCESSFULLY")
+                this.props.history.push("/login");
             } 
         }).catch(err => {
             console.log(err)

@@ -88,7 +88,9 @@ router.put("/resetpassword", (req, res) => {
                 bcrypt.hash(req.body.password, salt, (err, hash) => {
                     if (err) throw err;
                     user.password = hash;
-                    user.save().then(user => res.status(200).send('password updated'))
+                    user.resetPasswordToken = "";
+                    user.resetPasswordExpires = "";
+                    user.save().then(user => res.status(200).send({message: 'password updated'}))
                     console.log('user password updated')
                 })
             })
