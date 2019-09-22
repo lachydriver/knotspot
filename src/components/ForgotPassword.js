@@ -4,22 +4,32 @@ import { Link, NavLink } from "react-router-dom";
 import Axios from "axios";
 
 class ForgotPassword extends React.Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
-      email: ""
-    }
+      email: "",
+      error: ""
+    };
+  }
+
+  handleChange = e => {
+    this.setState({ email: e.target.value });
   };
 
-  handleChange = (e) => {
-    this.setState({email: e.target.value})
-  }
-
-  sendMail = (e) => {
+  sendMail = e => {
     e.preventDefault();
-    Axios.post('/api/email/forgotpassword', {email: this.state.email}).then(response => {console.log(response)}).catch(err => {console.log(err)})
-  }
-
+    Axios.post("/api/email/forgotpassword", { email: this.state.email })
+      .then(response => {
+        this.setState({error: "Email sent successfully"});
+      })
+      .catch(err => {
+        if(err.response.status === 400){
+          this.setState({error: "Email required"})
+        } else if(err.response.status === 404){
+          this.setState({error: "Email not found"})
+        }
+      });
+  };
 
   render() {
     return (
@@ -32,7 +42,7 @@ class ForgotPassword extends React.Component {
           Home
         </Link>
         <div className="form">
-        <div className="PageSwitcher">
+          <div className="PageSwitcher">
             <NavLink
               to="/login"
               activeClassName="PageSwitcher__Item--Active"
@@ -56,10 +66,15 @@ class ForgotPassword extends React.Component {
                     onChange={this.handleChange}
                   />
                   <br />
+                  {this.state.error}
                 </div>
               </div>
 
-              <button type="submit" className="login-btn" onClick={this.sendMail}>
+              <button
+                type="submit"
+                className="login-btn"
+                onClick={this.sendMail}
+              >
                 Forgot Password
               </button>
             </form>

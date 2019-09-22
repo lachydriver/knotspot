@@ -8,14 +8,14 @@ require('dotenv').config();
 
 // @route forgot password
 router.post("/forgotpassword", (req, res) => {
-    if (req.body.email === '') {
-        res.json('email required')
+    if (req.body.email === "") {
+        return res.status(400).json({error: "No email entered"});
     }
     email = req.body.email;
 
     User.findOne({email}).then(user => {
         if(!user){
-            res.json('email not found in database');
+            return res.status(404).json({error: "Email not found"})
         } else {
             console.log("email found");
             const token = crypto.randomBytes(20).toString('hex');
@@ -38,7 +38,7 @@ router.post("/forgotpassword", (req, res) => {
             });
 
             const mailOptions = {
-                from: `lachydriver@gmail.com`,
+                from: `cheepsheep123@gmail.com`,
                 to: `${user.email}`,
                 subject: 'Reset Password Link',
                 text:
@@ -46,6 +46,7 @@ router.post("/forgotpassword", (req, res) => {
             };
 
             console.log("Sending email");
+            console.log(process.env.EMAIL_ADDRESS)
 
             transporter.sendMail(mailOptions, function(err, response) {
                 if(err) {
