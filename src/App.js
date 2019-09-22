@@ -49,7 +49,7 @@ function App() {
         <Route path="/register" component={Register}/>
         <Route path="/forgotpassword" component={ForgotPassword}/>
         <Route path="/information/:muscle" component={Info}/>
-        <Route path="/reset" component={ResetPassword}/>
+        <Route path="/reset/:token" component={ResetPassword}/>
         <PrivateRoute exact path="/profile" component={Profile} />
         </Switch>
         
