@@ -21,7 +21,7 @@ router.post("/forgotpassword", (req, res) => {
       const token = crypto.randomBytes(20).toString("hex");
       console.log(token);
       user.resetPasswordToken = token;
-      user.resetPasswordExpires = Date.now() + 36000;
+      user.resetPasswordExpires = Date.now() + 365*24*60*60000
       console.log(user);
       user.save(function(err) {
         if (err) {
@@ -29,7 +29,32 @@ router.post("/forgotpassword", (req, res) => {
         }
       });
 
-      
+       const transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          user: `${process.env.EMAIL_ADDRESS}`,
+          pass: `${process.env.EMAIL_PASSWORD}`
+        }
+      });
+
+      const mailOptions = {
+        from: `cheepsheep123@gmail.com`,
+        to: `${user.email}`,
+        subject: "Reset Password Link",
+        text: `Your password reset link is: http://localhost:3000/reset/${token}`
+      };
+
+      console.log("Sending email");
+      console.log(process.env.EMAIL_ADDRESS);
+
+      transporter.sendMail(mailOptions, function(err, response) {
+        if (err) {
+          console.log("Error", err);
+        } else {
+          console.log("Response: ", response);
+          res.status(200).json("recovery email sent");
+        }
+      });
     }
   });
 });
