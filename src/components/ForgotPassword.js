@@ -1,6 +1,7 @@
 import React from "react";
 import Helmet from "react-helmet";
 import { Link, NavLink } from "react-router-dom";
+import Axios from "axios";
 
 class ForgotPassword extends React.Component {
   constructor(){
@@ -12,6 +13,11 @@ class ForgotPassword extends React.Component {
 
   handleChange = (e) => {
     this.setState({email: e.target.value})
+  }
+
+  sendMail = (e) => {
+    e.preventDefault();
+    Axios.post('/api/email/forgotpassword', {email: this.state.email}).then(response => {console.log(response)}).catch(err => {console.log(err)})
   }
 
 
@@ -53,7 +59,7 @@ class ForgotPassword extends React.Component {
                 </div>
               </div>
 
-              <button type="submit" className="login-btn">
+              <button type="submit" className="login-btn" onClick={this.sendMail}>
                 Forgot Password
               </button>
             </form>
