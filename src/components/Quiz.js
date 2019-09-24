@@ -617,11 +617,18 @@ class Quiz extends React.Component {
       ]
     }
 
+    const BACK_MAP = {
+      name: "my-map",
+      areas: [
+        { name: "Back of shoulder", _id: "Back of shoulder", shape: "poly", coords: [91,121,68,132,63,160,119,152,200,155,224,152,217,132,182,119], fillColor: "rgba(255, 255, 255, 0.8)"},
+      ]
+    }
+
     if (this.state.currentQuestion === 0 && this.state.diagram === "front") {
       return (
         <SizeMe monitorHeight refreshRate={128} refreshMode="debounce" render={({ size }) => (
           <div className="diagramcontainer">
-          <ImageMapper src={diagram} map={MAP} onClick={e => this.buttonPressed(e)} width={size.width} imgWidth={302} className="diagramimage" onMouseEnter={area => this.enterArea(area)} onMouseLeave={area => this.leaveArea(area)}/>
+          <ImageMapper src={diagram} map={MAP} onClick={e => {this.checkAnswer(e); this.nextQuestion()}} width={size.width} imgWidth={302} className="diagramimage" onMouseEnter={area => this.enterArea(area)} onMouseLeave={area => this.leaveArea(area)}/>
           {this.state.hoveredMuscle &&
           <span className="tooltip" style={{...this.getTipPosition(this.state.hoveredMuscle)}}>{this.state.hoveredMuscle && this.state.hoveredMuscle.name}</span>}
           </div>
@@ -633,7 +640,14 @@ class Quiz extends React.Component {
       this.state.diagram === "back"
     ) {
       return (
-        <div>
+        <SizeMe monitorHeight refreshRate={128} refreshMode="debounce" render={({ size }) => (
+          <div className="diagramcontainer">
+          <ImageMapper src={backdiagram} map={BACK_MAP} onClick={e => this.buttonPressed(e)} width={size.width} imgWidth={302} className="diagramimage" onMouseEnter={area => this.enterArea(area)} onMouseLeave={area => this.leaveArea(area)}/>
+          {this.state.hoveredMuscle &&
+          <span className="tooltip" style={{...this.getTipPosition(this.state.hoveredMuscle)}}>{this.state.hoveredMuscle && this.state.hoveredMuscle.name}</span>}
+          </div>
+        )}/>
+        /* <div>
           <img src={backdiagram} usemap="#back-image-map" alt="Back of Body" />
 
           <map name="back-image-map">
@@ -708,7 +722,7 @@ class Quiz extends React.Component {
               shape="poly"
             />
           </map>
-        </div>
+        </div> */
       );
     }
   };
