@@ -18,6 +18,7 @@ class ForgotPassword extends React.Component {
 
   sendMail = e => {
     e.preventDefault();
+    this.setState({error: "Sending email..."});
     Axios.post("/api/email/forgotpassword", { email: this.state.email })
       .then(response => {
         this.setState({error: "Email sent successfully"});
