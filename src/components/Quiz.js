@@ -621,6 +621,7 @@ class Quiz extends React.Component {
       name: "my-map",
       areas: [
         { name: "Back of shoulder", _id: "Back of shoulder", shape: "poly", coords: [91,121,68,132,63,160,119,152,200,155,224,152,217,132,182,119], fillColor: "rgba(255, 255, 255, 0.8)"},
+        { name: "Middle back", _id: "Middle back", shape: "poly", coords: [92,189,201,187,193,207,190,229,100,229,98,213], fillColor: "rgba(255, 255, 255, 0.8)"},
       ]
     }
 
