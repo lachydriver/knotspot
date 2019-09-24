@@ -24,17 +24,19 @@ class Profile extends Component {
 
   componentDidMount() {
     console.log(this.props.auth);
+    this.setState({error: "Loading..."});
     this.getResults();
   }
 
   getResults = () => {
-    console.log("got results")
+    console.log("got results");
     axios
       .post("/api/results/getresults", {
         user_id: this.props.auth.user.id
       })
       .then(res => {
         this.setState({ previousresults: res.data });
+        this.setState({ error: ""});
       })
       .catch(err => {
         if(err.response.status === 404){
