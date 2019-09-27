@@ -69,7 +69,7 @@ class Profile extends Component {
             <h4>
               <b>Hey there,</b> {user.username.split(" ")[0]}
               <br />
-              Your email is: {user.email}
+              Your Results (from most to least likely):
             </h4>
             {this.state.error}
             {this.state.previousresults.map((result, index) => {
@@ -78,11 +78,11 @@ class Profile extends Component {
                   <table className="resultstable">
                     <tr>
                       <th>
-                        <b>Muscle Test</b> - {moment(result.createdAt).format('DD/MM/YYYY - h:mm:ssa')} <button className="delete" onClick={() => this.deleteResult(result._id)}>Delete</button>
+                        Muscle Test - {moment(result.createdAt).format('DD/MM/YYYY - h:mm:ssa')} <button className="delete" onClick={() => this.deleteResult(result._id)}>Delete</button>
                       </th>
                     </tr>
                     {result.results.map((muscle, key) => {
-                      return <tr><td >{muscle[0]} - <Link to={`/information/${muscle[0]}`}>Info</Link></td></tr>;
+                      return <tr><td ><b>{muscle[0]} - <Link to={`/information/${muscle[0]}`}>Info</Link></b></td></tr>;
                     })}
                   </table><br/>
                 </div>

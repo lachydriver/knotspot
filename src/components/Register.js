@@ -58,13 +58,8 @@ class Register extends React.Component {
         style={customStyles}
         contentLabel="Example Modal"
       >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.
+        In using this software I understand that Knot Spot  not intended to replace health professional advice and that I should seek professional advice if my symptoms are not improving. I also understand that any of the suggestions given are a guide and if causing increased pain should be ceased immediately.
+I have read and agree to the above statement.
         <br />
         <button onClick={this.acceptModal}>Agree</button>
       </Modal>
@@ -203,7 +198,7 @@ class Register extends React.Component {
               >Register</button>
               )}
             </form>
-            <button onClick={this.openModal} className="start-button">Terms</button>
+            <button onClick={this.openModal} className="start-button">Disclaimer</button>
           </div>
         </div>
       </div>
