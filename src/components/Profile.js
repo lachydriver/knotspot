@@ -72,22 +72,24 @@ class Profile extends Component {
               Your Results (from most to least likely):
             </h4>
             {this.state.error}
+            <div>
             {this.state.previousresults.map((result, index) => {
               return (
                 <div key={index}>
-                  <table className="resultstable">
+                  <table className="resultstable savedresults">
                     <tr>
                       <th>
                         Muscle Test - {moment(result.createdAt).format('DD/MM/YYYY - h:mm:ssa')} <button className="delete" onClick={() => this.deleteResult(result._id)}>Delete</button>
                       </th>
                     </tr>
                     {result.results.map((muscle, key) => {
-                      return <tr><td ><b>{muscle[0]} - <Link to={`/information/${muscle[0]}`}>Info</Link></b></td></tr>;
+                      return <tr><td ><b>{key + 1}. {muscle[0]} - <Link to={`/information/${muscle[0]}`}>Info</Link></b></td></tr>;
                     })}
                   </table><br/>
                 </div>
               );
-            })}<br/>
+            })}</div>
+            <br/>
             <Link to="/quiz" className="retakebutton">
               Take Quiz
             </Link>

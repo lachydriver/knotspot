@@ -8,6 +8,7 @@ import Register from './components/Register';
 import ForgotPassword from './components/ForgotPassword';
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Profile from "./components/Profile";
+import Landing from './components/Landing';
 import Info from "./components/Info";
 import ResetPassword from  "./components/ResetPassword";
 import jwt_decode from "jwt-decode";
@@ -43,7 +44,8 @@ function App() {
     <div className="App">
       <div>
         <Switch>
-        <Route path="/" exact component={Home}/>
+        <Route path="/" exact component={Landing}/>
+        <Route path="/start" component={Home}/>
         <Route path="/quiz" component={QuizContainer}/>
         <Route path="/login" component={Login}/>
         <Route path="/register" component={Register}/>

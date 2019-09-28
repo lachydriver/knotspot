@@ -91,6 +91,16 @@ body {
   margin-top: 9%;
 }
 
+.landing {
+  text-align: center;
+  background-color: rgba(205, 209, 215, 0.95);
+  width: 50%;
+  border-radius: 20px;
+  box-shadow: 5px 6px 10px;
+  margin: auto;
+  margin-top: 9%;
+}
+
 .start-button {
   font-size: 18px;
   padding: 15px 30px;
@@ -316,6 +326,7 @@ area:hover {
   margin: 20px;
 }
 
+
 .login-button {
   font-size: 18px;
   padding: 15px 30px;
@@ -453,4 +464,16 @@ p{
 .pdfwrapper {
   width: 75% !important;
   margin: 0 auto;
+}
+
+.navbar {
+  width: 100%;
+  background-color: gray;
+  height: 10vh;
+  overflow: hidden;
+}
+
+.navbar-header {
+  float: left;
+  vertical-align: middle;
 }

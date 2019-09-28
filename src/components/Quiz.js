@@ -552,6 +552,7 @@ class Quiz extends React.Component {
   };
 
   changeDiagram = e => {
+    this.setState({hoveredMuscle: null})
     if (e === "front") {
       this.setState({ diagram: "front" });
     } else if (e === "back") {
@@ -618,10 +619,15 @@ class Quiz extends React.Component {
     }
 
     const BACK_MAP = {
-      name: "my-map",
+      name: "back-map",
       areas: [
         { name: "Back of shoulder", _id: "Back of shoulder", shape: "poly", coords: [91,121,68,132,63,160,119,152,200,155,224,152,217,132,182,119], fillColor: "rgba(255, 255, 255, 0.8)"},
         { name: "Middle back", _id: "Middle back", shape: "poly", coords: [92,189,201,187,193,207,190,229,100,229,98,213], fillColor: "rgba(255, 255, 255, 0.8)"},
+        { name: "Lower back", _id: "Lower back", shape: "poly", coords: [100,231,190,232,198,279,90,282], fillColor: "rgba(255, 255, 255, 0.8)"},
+        { name: "Back of knee", _id: "Back of knee", shape: "poly", coords: [89,440,86,485,125,487,121,471,128,443], fillColor: "rgba(255, 255, 255, 0.8)"},
+        { name: "Back of knee", _id: "Back of knee", shape: "poly", coords: [161,446,164,466,162,487,203,489,202,467,200,446], fillColor: "rgba(255, 255, 255, 0.8)"},
+        { name: "Hips", _id: "Hips", shape: "poly", coords: [88,285,200,282,205,324,82,332], fillColor: "rgba(255, 255, 255, 0.8)"},
+        { name: "Behind Scapula", _id: "Behind Scapula", shape: "poly", coords: [118,153,119,186,164,185,164,156], fillColor: "rgba(255, 255, 255, 0.8)"},
       ]
     }
 
@@ -643,7 +649,7 @@ class Quiz extends React.Component {
       return (
         <SizeMe monitorHeight refreshRate={128} refreshMode="debounce" render={({ size }) => (
           <div className="diagramcontainer">
-          <ImageMapper src={backdiagram} map={BACK_MAP} onClick={e => this.buttonPressed(e)} width={size.width} imgWidth={302} className="diagramimage" onMouseEnter={area => this.enterArea(area)} onMouseLeave={area => this.leaveArea(area)}/>
+          <ImageMapper src={backdiagram} map={BACK_MAP} onClick={e => {this.checkAnswer(e); this.nextQuestion()}} width={size.width} imgWidth={302} className="diagramimage" onMouseEnter={area => this.enterArea(area)} onMouseLeave={area => this.leaveArea(area)}/>
           {this.state.hoveredMuscle &&
           <span className="tooltip" style={{...this.getTipPosition(this.state.hoveredMuscle)}}>{this.state.hoveredMuscle && this.state.hoveredMuscle.name}</span>}
           </div>
