@@ -69,26 +69,11 @@ class Profile extends Component {
             <h4>
               <b>Hey there,</b> {user.username.split(" ")[0]}
               <br />
-              Your Results (from most to least likely):
+              Click the below button to view your Results (from most to least likely):
             </h4>
-            {this.state.error}
-            <div>
-            {this.state.previousresults.map((result, index) => {
-              return (
-                <div key={index}>
-                  <table className="resultstable savedresults">
-                    <tr>
-                      <th>
-                        {moment(result.createdAt).format('DD/MM/YYYY')} <button className="delete" onClick={() => this.deleteResult(result._id)}>Delete</button>
-                      </th>
-                    </tr>
-                    {result.results.map((muscle, key) => {
-                      return <tr><td ><b>{key + 1}. {muscle[0]} <Link to={`/information/${muscle[0]}`} className="infobutton">ⓘ</Link></b></td></tr>;
-                    })}
-                  </table><br/>
-                </div>
-              );
-            })}</div>
+            <Link to="/results" className="retakebutton">
+              Results
+            </Link>
             <br/>
             <Link to="/quiz" className="retakebutton">
               Take Quiz

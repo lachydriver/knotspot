@@ -10,6 +10,7 @@ import PrivateRoute from "./components/private-route/PrivateRoute";
 import Profile from "./components/Profile";
 import Landing from './components/Landing';
 import Info from "./components/Info";
+import Results from "./components/Results";
 import ResetPassword from  "./components/ResetPassword";
 import ChangePassword from "./components/ChangePassword";
 import jwt_decode from "jwt-decode";
@@ -52,6 +53,7 @@ function App() {
         <Route path="/login" component={Login}/>
         <Route path="/register" component={Register}/>
         <Route path="/forgotpassword" component={ForgotPassword}/>
+        <Route path="/results" component={Results}/>
         <Route path="/information/:muscle" component={Info}/>
         <Route path="/reset/:token" component={ResetPassword}/>
         <PrivateRoute exact path="/profile" component={Profile} />
