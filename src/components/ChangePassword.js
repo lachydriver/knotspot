@@ -4,7 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import "./login.css";
 import Axios from "axios";
 
-class ResetPassword extends Component {
+class ChangePassword extends Component {
   constructor() {
     super();
     this.state = {
@@ -40,12 +40,12 @@ class ResetPassword extends Component {
           this.setState({passworderror: "Passwords do not match"})
       } else {
         this.setState({passworderror: ""})
-        Axios.put("/api/email/resetpassword", {
+        Axios.put("/api/email/changepassword", {
             username: this.state.username,
             password: this.state.password
         }).then(response => {
             if(response.data.message === "password updated") {
-                this.props.history.push("/login");
+                this.props.history.push("/profile");
             } 
         }).catch(err => {
             console.log(err)
@@ -109,7 +109,7 @@ class ResetPassword extends Component {
                   </NavLink>
                 </div>
                 <div className="login">
-                  <h1 className="titleforgot">Reset Password</h1>
+                  <h1 className="titleforgot">Change Password</h1>
                   <p>Username: {this.state.username}</p>
                   <form className="FormFields" noValidate>
                     <div className="inputgrp">
@@ -142,7 +142,7 @@ class ResetPassword extends Component {
                       className="login-btn"
                       onClick={this.resetPassword}
                     >
-                      Reset Password
+                      Change Password
                     </button>
                   </form>
                 </div>
@@ -154,4 +154,4 @@ class ResetPassword extends Component {
   }
 }
 
-export default ResetPassword;
+export default ChangePassword;

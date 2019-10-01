@@ -432,7 +432,7 @@ p{
 }
 
 .delete {
-  background-color: rgb(173, 0, 0);
+  background-color: rgb(90, 0, 0);
   color: white;
   border: 0;
   border-radius: 5px;
@@ -476,4 +476,8 @@ p{
 .navbar-header {
   float: left;
   vertical-align: middle;
+}
+
+.infobutton {
+  float: right;
 }

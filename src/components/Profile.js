@@ -79,11 +79,11 @@ class Profile extends Component {
                   <table className="resultstable savedresults">
                     <tr>
                       <th>
-                        Muscle Test - {moment(result.createdAt).format('DD/MM/YYYY - h:mm:ssa')} <button className="delete" onClick={() => this.deleteResult(result._id)}>Delete</button>
+                        {moment(result.createdAt).format('DD/MM/YYYY')} <button className="delete" onClick={() => this.deleteResult(result._id)}>Delete</button>
                       </th>
                     </tr>
                     {result.results.map((muscle, key) => {
-                      return <tr><td ><b>{key + 1}. {muscle[0]} - <Link to={`/information/${muscle[0]}`}>Info</Link></b></td></tr>;
+                      return <tr><td ><b>{key + 1}. {muscle[0]} <Link to={`/information/${muscle[0]}`} className="infobutton">ⓘ</Link></b></td></tr>;
                     })}
                   </table><br/>
                 </div>
@@ -92,6 +92,9 @@ class Profile extends Component {
             <br/>
             <Link to="/quiz" className="retakebutton">
               Take Quiz
+            </Link>
+            <Link to="/changepassword" className="retakebutton">
+              Change Password
             </Link>
             <button
               className="retakebutton"
