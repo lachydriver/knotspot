@@ -3,6 +3,7 @@ import axios from "axios";
 import moment from "moment";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import Helmet from "react-helmet";
 
 class Results extends Component {
   constructor() {
@@ -41,6 +42,9 @@ class Results extends Component {
   render() {
     return (
     <div className="page-container">
+        <Helmet>
+          <title>Knot Spot - Results</title>
+        </Helmet>
       <div className="container">
         <div>
         {this.state.error}
