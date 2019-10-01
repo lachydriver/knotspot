@@ -83,7 +83,7 @@ class ChangePassword extends Component {
                   </NavLink>
                 </div>
                 <div className="login">
-                  <h1 className="titleforgot">This token is invalid or has expired.</h1>
+                  <h1 className="titleforgot">You are not logged in.</h1>
                 </div>
               </div>
             </div>
@@ -151,7 +151,11 @@ class ChangePassword extends Component {
           );
     }
     
-  }
-}
+  };
+};
 
-export default ChangePassword;
+const mapStateToProps = state => ({
+    auth: state.auth
+  });
+
+  export default connect(mapStateToProps)(ChangePassword);

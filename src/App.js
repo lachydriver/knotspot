@@ -11,6 +11,7 @@ import Profile from "./components/Profile";
 import Landing from './components/Landing';
 import Info from "./components/Info";
 import ResetPassword from  "./components/ResetPassword";
+import ChangePassword from "./components/ChangePassword";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
