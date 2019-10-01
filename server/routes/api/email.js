@@ -98,4 +98,24 @@ router.put("/resetpassword", (req, res) => {
     })
 })
 
+router.put("/changepassword", (req, res) => {
+User.findOne({username: req.body.username}).then(user => {
+        if(!user){
+            res.status(404).send('Username not found')
+        } else {
+            //hash the new password
+            bcrypt.genSalt(10, (err, salt) => {
+                bcrypt.hash(req.body.password, salt, (err, hash) => {
+                    if (err) throw err;
+                    user.password = hash;
+                    user.resetPasswordToken = "";
+                    user.resetPasswordExpires = "";
+                    user.save().then(user => res.status(200).send({message: 'password updated'}))
+                    console.log('user password updated')
+                })
+            })
+        }
+    })
+})
+
 module.exports = router;

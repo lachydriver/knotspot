@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
 import { Link, NavLink } from "react-router-dom";
+import { connect } from "react-redux";
 import "./login.css";
 import Axios from "axios";
 
@@ -17,21 +18,11 @@ class ChangePassword extends Component {
   }
 
   async componentDidMount() {
-    console.log(this.props.match.params.token);
-    await Axios.get("/api/email/reset", {
-      params: { resetPasswordToken: this.props.match.params.token }
-    }).then(response => {
-        if(response.data.message === "token ok") {
-            this.setState({username: response.data.username,
-            error: false,
-            update: false
-            })
-        } else {
-            this.setState({error: true})
-        }
-    }).catch(err => {
-        console.log(err.data)
-    });
+    if(this.props.auth.isAuthenticated === false){
+      this.setState({error: true});
+    } else {
+      this.setState({username: this.props.auth.user.username});
+    }
   }
 
   resetPassword = (e) => {
@@ -66,7 +57,7 @@ class ChangePassword extends Component {
         return(
             <div className="form-root">
               <Helmet>
-                <title>Knot Spot - Reset Password</title>
+                <title>Knot Spot - Change Password</title>
               </Helmet>
       
               <Link to="/" className="profile-button retakebutton">
