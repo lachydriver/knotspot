@@ -57,7 +57,7 @@ class Results extends Component {
           <title>Knot Spot - Results</title>
         </Helmet>
       <div className="container">
-        <div>
+        <div className="resultsdisplay">
         {this.state.error}
           {this.state.previousresults.map((result, index) => {
             return (

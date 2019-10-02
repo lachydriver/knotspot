@@ -466,16 +466,13 @@ p{
   margin: 0 auto;
 }
 
-.navbar {
-  width: 100%;
-  background-color: gray;
-  height: 10vh;
-  overflow: hidden;
+.resultsdisplay {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.navbar-header {
-  float: left;
-  vertical-align: middle;
+.resultsdisplay table {
+  margin: 10px;
 }
 
 .infobutton {

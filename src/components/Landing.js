@@ -30,10 +30,7 @@ class Landing extends React.Component {
   render() {
     return (
       <div className="homepage">
-        <div className="navbar">
-        <h3 className="navbar-header">Knot Spot</h3>
         {this.displayButton()}
-        </div>
         <div className="landing">
           <Helmet>
             <title>Knot Spot - Home</title>
@@ -54,8 +51,8 @@ class Landing extends React.Component {
             as a Guest” if you would just like to do the quiz and see the most
             likely muscles involved.
           </p>
-          <Link to="/quiz" className="start-button">
-            Start Quiz
+          <Link to="/start" className="start-button">
+            Start As Guest
           </Link>
         </div>
       </div>
