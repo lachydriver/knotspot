@@ -524,7 +524,8 @@ class Quiz extends React.Component {
     axios
       .post("/api/results/saveresults", {
         user_id: this.props.auth.user.id,
-        results: final
+        results: final,
+        firstbone: this.state.userAnswer_1
       })
       .then(res => {
         console.log(res);

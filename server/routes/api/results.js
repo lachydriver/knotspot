@@ -6,10 +6,12 @@ const Result = require("../../results");
 router.post("/saveresults", (req, res) => {
     user_id = req.body.user_id;
     results = req.body.results;
+    firstbone = req.body.firstbone;
 
     const newResult = new Result({
         user_id: user_id,
-        results: results
+        results: results,
+        firstbone: firstbone
     });
 
     newResult.save().then(result => res.json(result)).catch(err => res.status(400));

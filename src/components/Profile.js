@@ -10,11 +10,6 @@ import { Helmet } from "react-helmet";
 class Profile extends Component {
   constructor() {
     super();
-    this.state = {
-      previousresults: [],
-      error: ""
-    };
-    this.deleteResult = this.deleteResult.bind(this)
   }
 
   onLogoutClick = e => {
@@ -23,39 +18,7 @@ class Profile extends Component {
   };
 
   componentDidMount() {
-    console.log(this.props.auth);
-    this.setState({error: "Loading..."});
-    this.getResults();
-  }
 
-  getResults = () => {
-    console.log("got results");
-    axios
-      .post("/api/results/getresults", {
-        user_id: this.props.auth.user.id
-      })
-      .then(res => {
-        this.setState({ previousresults: res.data });
-        this.setState({ error: ""});
-      })
-      .catch(err => {
-        if(err.response.status === 404){
-          this.setState({error: "No Saved Results Found"});
-          this.setState({previousresults: []})
-        } else {
-          console.log(err)
-        }
-      });
-  };
-
-  deleteResult = (id) => {
-    axios.post("/api/results/deleteresult", {
-      _id: id
-    }).then(this.getResults()).catch(err => {if(err.response.status === 404){
-      this.getResults();
-    } else {
-      console.log(err);
-    }})
   }
 
   render() {

@@ -9,7 +9,8 @@ var MuscleScore = new Schema({
 const ResultSchema = new Schema(
     {
         user_id: String,
-        results: Array
+        results: Array,
+        firstbone: String
     },
     { timestamps: true}
 );

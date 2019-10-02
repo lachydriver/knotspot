@@ -39,6 +39,17 @@ class Results extends Component {
       });
   };
 
+  deleteResult = (id) => {
+    this.setState({error: "Loading..."})
+    axios.post("/api/results/deleteresult", {
+      _id: id
+    }).then(this.getResults()).catch(err => {if(err.response.status === 404){
+      this.getResults();
+    } else {
+      console.log(err);
+    }})
+  };
+
   render() {
     return (
     <div className="page-container">
@@ -54,7 +65,7 @@ class Results extends Component {
                 <table className="resultstable savedresults">
                   <tr>
                     <th>
-                      {moment(result.createdAt).format("DD/MM/YYYY")}{" "}
+                      {result.firstbone} - {moment(result.createdAt).format("DD/MM/YYYY")}{" "}
                       <button
                         className="delete"
                         onClick={() => this.deleteResult(result._id)}
