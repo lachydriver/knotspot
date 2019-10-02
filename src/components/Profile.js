@@ -50,7 +50,7 @@ class Profile extends Component {
             >
               Logout
             </button>
-            <Link to="/" className="retakebutton">
+            <Link to="/start" className="retakebutton">
               Home
             </Link>
             </div>
