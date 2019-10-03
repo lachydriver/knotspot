@@ -834,7 +834,7 @@ class Quiz extends React.Component {
 
           <h2>Disclaimer</h2>
           <p>In using this software I understand that Knot Spot  not intended to replace health professional advice and that I should seek professional advice if my symptoms are not improving. I also understand that any of the suggestions given are a guide and if causing increased pain should be ceased immediately.
-<br/><br/>I have read and agree to the above statement.</p>
+<br/><br/>You will not be able to save your results if you continue without being signed into an account.<br/><br/>I have read and agree to the above statement.</p>
           <button onClick={this.closeModal}>Accept</button>
         </Modal>
         <h2>
