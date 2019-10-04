@@ -36,8 +36,7 @@ class Landing extends React.Component {
             <title>Knot Spot - Home</title>
           </Helmet>
 
-          <h1>Knot Spot</h1>
-          <img src={Logo} alt="" />
+          <img src={Logo} alt="" className="logo"/>
           <p className="fronttext">
             Welcome to Knot Spot! 
             <br/><br/>
