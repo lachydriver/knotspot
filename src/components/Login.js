@@ -35,10 +35,12 @@ class Login extends React.Component {
     }
   }
 
+  //set username variable on change
   onChange = e => {
     this.setState({ [e.target.id]: e.target.value });
   };
 
+  //submit the login data to the backend server
   onSubmit = e => {
     e.preventDefault();
 

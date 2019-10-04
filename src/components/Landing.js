@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import robot from "../content/img/robot2.png";
+import Logo from "../content/img/logo.png";
 import { connect } from "react-redux";
 import { Helmet } from "react-helmet";
 
@@ -37,7 +37,7 @@ class Landing extends React.Component {
           </Helmet>
 
           <h1>Knot Spot</h1>
-          {/*<img src={robot} alt="robot" />*/}
+          <img src={Logo} alt="" />
           <p className="fronttext">
             Welcome to Knot Spot! 
             <br/><br/>

@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { Helmet } from "react-helmet";
 
 class Home extends React.Component {
+  //If statement to display the profile link for logged in users, and login/register for guests
   displayButton = () => {
     if (this.props.auth.isAuthenticated === true) {
       return (
@@ -37,7 +38,6 @@ class Home extends React.Component {
           </Helmet>
 
           <h1>Knot Spot</h1>
-          {/*<img src={robot} alt="robot" />*/}
           <p className="fronttext">
             Welcome to the Muscle Strain Diagnostic Software. This software is
             used to determine the cause of any specific pain you have in your

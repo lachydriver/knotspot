@@ -30,6 +30,7 @@ class Quiz extends React.Component {
     this.determineButtons = this.determineButtons.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
+  //Set default state for answers and options
   state = {
     userAnswer_1: null,
     userAnswer_2: null,
@@ -54,6 +55,7 @@ class Quiz extends React.Component {
 
   results = {};
 
+  //Load the quiz
   loadQuiz = () => {
     const { currentQuestion } = this.state;
     this.setState(() => {
@@ -64,6 +66,7 @@ class Quiz extends React.Component {
     });
   };
 
+  //Display terms and conditions based on whether user is signed in or not
   componentDidMount() {
     this.loadQuiz();
     if(this.props.auth.isAuthenticated === false){
@@ -73,6 +76,7 @@ class Quiz extends React.Component {
     }
   }
 
+  //Proceed to the next question when user answers
   nextQuestion = () => {
     if (this.state.currentQuestion <= 5) {
       console.log("question");
@@ -108,6 +112,7 @@ class Quiz extends React.Component {
     });
   };
 
+  //Check if all questions have been answered
   checkAnswer = answer => {
     if (this.state.currentQuestion === 0) {
       this.setState({
@@ -147,7 +152,7 @@ class Quiz extends React.Component {
     }
   };
 
-  //ordered = [];
+  //Add up the scores of each muscle depending on the answer to each question
   finishHandler = () => {
     const {
       userAnswer_1,
@@ -346,7 +351,6 @@ class Quiz extends React.Component {
 
     if (userAnswer_4 === "Car") {
       this.results["Para-cevicals"] = (this.results["Para-cevicals"] || 0) + 5;
-      //this.results.push({key: "Para-cevicals", value: 5})
       console.log(this.results);
       this.results["Scalene"] = (this.results["Scalene"] || 0) + 5;
     } else if (userAnswer_4 === "Work") {
@@ -481,6 +485,7 @@ class Quiz extends React.Component {
     }
   };
 
+  //Restart the quiz by resetting all states to default
   restartHandle = () => {
     this.setState({
       quizEnd: false,
@@ -510,6 +515,7 @@ class Quiz extends React.Component {
     }
   };
 
+  //Save results and push them to the database
   saveResults = () => {
     var re = this.results;
     var ordered = [];
@@ -600,6 +606,7 @@ class Quiz extends React.Component {
     return { top: `${area.center[1]}px`, left: `${area.center[0]}px` };
   }
 
+  //Display the front/back diagram depending on which button has been pushed
   showDiagram = () => {
     const MAP = {
       name: "my-map",
@@ -655,82 +662,6 @@ class Quiz extends React.Component {
           <span className="tooltip" style={{...this.getTipPosition(this.state.hoveredMuscle)}}>{this.state.hoveredMuscle && this.state.hoveredMuscle.name}</span>}
           </div>
         )}/>
-        /* <div>
-          <img src={backdiagram} usemap="#back-image-map" alt="Back of Body" />
-
-          <map name="back-image-map">
-            <area
-              target=""
-              alt="backofshoulder"
-              title="backofshoulder"
-              id="Back of shoulder"
-              onClick={e => this.buttonPressed(e)}
-              href=""
-              coords="91,121,68,132,63,160,119,152,200,155,224,152,217,132,182,119"
-              shape="poly"
-            />
-            <area
-              target=""
-              alt="middleback"
-              title="middleback"
-              id="Middle back"
-              onClick={e => this.buttonPressed(e)}
-              href=""
-              coords="92,189,201,187,193,207,190,229,100,229,98,213"
-              shape="poly"
-            />
-            <area
-              target=""
-              alt="lowerback"
-              title="lowerback"
-              id="Lower back"
-              onClick={e => this.buttonPressed(e)}
-              href=""
-              coords="100,231,190,232,198,279,90,282"
-              shape="poly"
-            />
-            <area
-              target=""
-              alt="backofknee"
-              title="backofknee"
-              id="Back of knee"
-              onClick={e => this.buttonPressed(e)}
-              href=""
-              coords="89,440,86,485,125,487,121,471,128,443"
-              shape="poly"
-            />
-            <area
-              target=""
-              alt="backofknee"
-              title="backofknee"
-              id="Back of knee"
-              onClick={e => this.buttonPressed(e)}
-              href=""
-              coords="161,446,164,466,162,487,203,489,202,467,200,446"
-              shape="poly"
-            />
-            <area
-              target=""
-              alt="hips"
-              title="hips"
-              id="Hips"
-              onClick={e => this.buttonPressed(e)}
-              href=""
-              coords="88,285,200,282,205,324,82,332"
-              shape="poly"
-            />
-            <area
-              target=""
-              alt="behindscapula"
-              title="behindscapula"
-              id="Behind scapula"
-              onClick={e => this.buttonPressed(e)}
-              href=""
-              coords="118,153,119,186,164,185,164,156"
-              shape="poly"
-            />
-          </map>
-        </div> */
       );
     }
   };
@@ -750,6 +681,7 @@ class Quiz extends React.Component {
       userAnswer_7
     } = this.state;
 
+    //Render out all of the questions
     if (quizEnd) {
       var re = this.results;
       var ordered = [];
@@ -760,10 +692,8 @@ class Quiz extends React.Component {
         return a[1] - b[1];
       });
       var final = ordered.reverse().slice(0, 4);
-      //this.setState({results: final});
       console.log(final);
       const listyle = { "font-size": "1.5em" };
-      //var top_result = this.ordered.slice(0, 2)
       return (
         <div className="End">
           <Helmet>
@@ -815,8 +745,8 @@ class Quiz extends React.Component {
             Therapist in Melbourne
           </a>{" "}
           <br />
-          <a href=" ">Therapist in Perth</a> <br />
-          <a href=" ">Therapist in Darwin</a> <br />
+          <a href="https://www.google.com/search?q=occupational+therapist+in+perth&rlz=1C1GCEA_enAU843AU843&oq=occupational+therapist+in+perth&aqs=chrome..69i57j0l5.5370j0j7&sourceid=chrome&ie=UTF-8">Therapist in Perth</a> <br />
+          <a href="https://www.google.com/search?rlz=1C1GCEA_enAU843AU843&sxsrf=ACYBGNQvXhR2prS2g0qpyZgesEw88qaXmg%3A1570179409672&ei=UQmXXb3OKJDdrQG04IOoBg&q=occupational+therapist+in+darwin&oq=occupational+therapist+in+darwin&gs_l=psy-ab.3..0i22i30l5.10534.12883..13030...1.2..0.275.1366.0j6j1......0....1..gws-wiz.......0i71j0.-QOeWgQ-K-s&ved=0ahUKEwj9usmPnoLlAhWQbisKHTTwAGUQ4dUDCAs&uact=5">Therapist in Darwin</a> <br />
         </div>
       );
     }

@@ -12,6 +12,7 @@ class Profile extends Component {
     super();
   }
 
+  //function to log the user out
   onLogoutClick = e => {
     e.preventDefault();
     this.props.logoutUser();
@@ -58,6 +59,8 @@ class Profile extends Component {
     );
   }
 }
+
+//Link component to the redux store and import the auth props
 Profile.propTypes = {
   logoutUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired

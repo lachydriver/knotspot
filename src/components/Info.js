@@ -19,6 +19,7 @@ class Info extends Component {
     this.setState({ muscle: this.props.match.params.muscle });
   }
 
+  //Render the PDF within a self resizing div to fit on smaller screens
   renderInfo() {
     if (this.state.muscle === "Hamstrings") {
       return (
