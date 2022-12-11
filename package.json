@@ -8,7 +8,7 @@
     "classnames": "^2.2.6",
     "cors": "^2.8.5",
     "eslint-utils": "^1.4.2",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "is-empty": "^1.2.0",
     "jwt-decode": "^2.2.0",
     "moment": "^2.24.0",
